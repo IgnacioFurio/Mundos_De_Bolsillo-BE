@@ -23,7 +23,7 @@ gameController.createGame = async (req,res) => {
         return res.status(201).json(
             { 
                 success: true,
-                message: 'Partida creada satisfactoriamente.',
+                message: `Ya puedes comenzar a crear nuevas historias en ${game.title}.`,
                 data: game
             }
         );
@@ -31,7 +31,38 @@ gameController.createGame = async (req,res) => {
         return res.status(501).json(
             { 
                 success: false,
-                message: 'Algo no ha salido según lo esperado.',
+                message: 'Parece que tus enemigos no quieren que empieces una nueva partida.',
+                error: error.message
+            }
+        );  
+    }
+};
+
+gameController.getAllGames = async(req,res) => {
+    try {
+        const game = await Game.findAll();
+        
+        if (!game) {
+            return res.status(404).json(
+                { 
+                    success: false,
+                    message: 'Estamos buscando minuciosamente pero no logramos encontrar ninguna partida en la que juegues.',
+                }
+            );
+        }
+
+        return res.status(201).json(
+            { 
+                success: false,
+                message: '¿A que jugaremos hoy?.',
+                data: game
+            }
+        );
+    } catch (error) {
+        return res.status(501).json(
+            { 
+                success: false,
+                message: 'Algún mago ha saboteado tú búsqueda, estamos trabajando en solucionarlo.',
                 error: error.message
             }
         );  
