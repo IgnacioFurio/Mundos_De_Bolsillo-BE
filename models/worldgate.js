@@ -11,6 +11,18 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      WorldGate.belongsTo(
+        models.Game,
+        {
+          foreignKey: "game_id"
+        }
+      );
+      WorldGate.belongsTo(
+        models.World,
+        {
+          foreignKey: "world_id"
+        }
+      );
     }
   }
   WorldGate.init({
