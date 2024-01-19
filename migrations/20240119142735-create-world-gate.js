@@ -10,10 +10,20 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       game_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Games",
+          key:"id",
+          allowNull: false
+        }
       },
       world_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Worlds",
+          key:"id",
+          allowNull: false
+        }
       },
       createdAt: {
         allowNull: false,
