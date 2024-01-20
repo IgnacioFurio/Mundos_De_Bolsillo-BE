@@ -13,7 +13,7 @@ gameController.createGame = async (req,res) => {
             });
         }
 
-        const game = await Game.create(
+        const newGame = await Game.create(
             {
                 title: title,
                 description: description
@@ -24,7 +24,7 @@ gameController.createGame = async (req,res) => {
             { 
                 success: true,
                 message: `Ya puedes comenzar a crear nuevas historias en ${game.title}.`,
-                data: game
+                data: newGame
             }
         );
     } catch (error) {
@@ -38,9 +38,9 @@ gameController.createGame = async (req,res) => {
     }
 };
 
-gameController.getAllGames = async(req,res) => {
+gameController.getAllGames = async (req,res) => {
     try {
-        const game = await Game.findAll();
+        const allGames = await Game.findAll();
         
         if (!game) {
             return res.status(404).json(
@@ -55,7 +55,7 @@ gameController.getAllGames = async(req,res) => {
             { 
                 success: false,
                 message: '¿A que jugaremos hoy?.',
-                data: game
+                data: allGames
             }
         );
     } catch (error) {
@@ -66,6 +66,57 @@ gameController.getAllGames = async(req,res) => {
                 error: error.message
             }
         );  
+    }
+};
+
+gameController.updateGame = async (req,res) => {
+    try {
+        const { id,title, description } = req.body
+
+        if (id === "") {
+            return res.status(409).json(
+                { 
+                    success: false,
+                    message: 'No hemos sido capaces de encontrar la partida que buscas, pero seguiremos mirando en nuestras estanterías.',
+                }
+            ); 
+        };
+        
+        if (title === "") {
+            return res.status(409).json(
+                { 
+                    success: false,
+                    message: '¿Como se te ocurre quitarle el nombre a la partida?, lo sentimos, pero no podemos permitirlo.',
+                }
+            ); 
+        };
+
+        const updateGame = await Game.update(
+            {
+                title: title,
+                description: description
+            },
+            {
+                where: {id: id}
+            }
+        );
+
+        return res.status(200).json(
+            {
+                success: true,
+                message: 'Estamos procediendo a guardar tu nueva información.',
+                data: updateGame
+            }
+        );  
+
+    } catch (error) {
+        return res.status(501).json(
+            { 
+                success: false,
+                message: 'Algo esta impidiendo que podamos cambiar los datos de la partida.',
+                error: error.message
+            }
+        ); 
     }
 };
 
