@@ -23,7 +23,7 @@ gameController.createGame = async (req,res) => {
         return res.status(201).json(
             { 
                 success: true,
-                message: `Ya puedes comenzar a crear nuevas historias en ${game.title}.`,
+                message: `Ya puedes comenzar a crear nuevas historias en ${newGame.title}.`,
                 data: newGame
             }
         );
@@ -42,7 +42,7 @@ gameController.getAllGames = async (req,res) => {
     try {
         const allGames = await Game.findAll();
         
-        if (!game) {
+        if (allGames.lenght === 0) {
             return res.status(404).json(
                 { 
                     success: false,
