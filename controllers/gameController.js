@@ -120,4 +120,44 @@ gameController.updateGame = async (req,res) => {
     }
 };
 
+gameController.deleteGame = async (req,res) => {
+    try {
+        const { game_id } = req.body
+
+        const findGame = await Game.findByPk(game_id);
+
+        if (!findGame) {
+            return res.status(404).json(
+                { 
+                    success: false,
+                    message: 'No hemos encontrado registros de tal partida.',
+                }
+            ); 
+        }
+
+        const deleteGame = await Game.destroy({
+            where: {
+                id: game_id
+            }
+        });
+
+        return res.status(200).json(
+            {
+                success: true,
+                message: 'Nos hemos desecho de todo rastro de tu partida, mantendremos el secreto.',
+                data: deleteGame
+            }
+        );  
+
+    } catch (error) {
+        return res.status(501).json(
+            { 
+                success: false,
+                message: 'Un ente malvado esta evitando que nos deshagamos de tu partida.',
+                error: error.message
+            }
+        ); 
+    }
+};
+
 module.exports = gameController;
