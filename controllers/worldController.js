@@ -69,4 +69,55 @@ worldController.getAllWorlds = async (req,res) => {
     }
 };
 
+worldController.updateWorld = async (req,res) => {
+    try {
+        const { id, name, description } = req.body
+
+        if (id === "") {
+            return res.status(409).json(
+                { 
+                    success: false,
+                    message: 'Nuestros archivos no muestran registros de tal mundo.',
+                }
+            ); 
+        };
+        
+        if (name === "") {
+            return res.status(409).json(
+                { 
+                    success: false,
+                    message: 'Un mundo sin nombre es como un verano sin helados.',
+                }
+            ); 
+        };
+
+        const updateWorld = await World.update(
+            {
+                name: name,
+                description: description
+            },
+            {
+                where: {id: id}
+            }
+        );
+
+        return res.status(200).json(
+            {
+                success: true,
+                message: `Vamos a dejar la nueva información actualizada de ${name} en su estante.`,
+                data: updateWorld
+            }
+        );  
+
+    } catch (error) {
+        return res.status(501).json(
+            { 
+                success: false,
+                message: 'Hay alguna clase de protección que nos impide avanzar de momento.',
+                error: error.message
+            }
+        ); 
+    }
+};
+
 module.exports = worldController
