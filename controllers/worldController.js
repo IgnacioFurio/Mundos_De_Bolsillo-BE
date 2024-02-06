@@ -120,4 +120,44 @@ worldController.updateWorld = async (req,res) => {
     }
 };
 
+worldController.deleteWorld = async (req,res) => {
+    try {
+        const { world_id } = req.body
+
+        const findWorld = await World.findByPk(world_id);
+
+        if (!findWorld) {
+            return res.status(404).json(
+                { 
+                    success: false,
+                    message: '¡Vaya!, no hay registros de tal mundo en nuestras estanterías.',
+                }
+            ); 
+        }
+
+        const deleteWorld = await World.destroy({
+            where: {
+                id: world_id
+            }
+        });
+
+        return res.status(200).json(
+            {
+                success: true,
+                message: `Gracias por usar nuestro rayo destructor, ahora vamos a destruir toda prueba acerca de la existencia de cierto mundo.`,
+                data: deleteWorld
+            }
+        );  
+
+    } catch (error) {
+        return res.status(501).json(
+            { 
+                success: false,
+                message: 'Un ente malvado esta evitando que nos deshagamos de tu partida.',
+                error: error.message
+            }
+        ); 
+    }
+};
+
 module.exports = worldController
