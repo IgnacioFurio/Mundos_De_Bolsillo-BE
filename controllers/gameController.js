@@ -53,7 +53,7 @@ gameController.getAllGames = async (req,res) => {
 
         return res.status(201).json(
             { 
-                success: false,
+                success: true,
                 message: '¿A que jugaremos hoy?.',
                 data: allGames
             }

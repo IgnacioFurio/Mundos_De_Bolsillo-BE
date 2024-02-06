@@ -38,4 +38,35 @@ worldController.createWorld = async (req,res) => {
     }
 };
 
+worldController.getAllWorlds = async (req,res) => {
+    try {
+        const allWorlds = await World.findAll();
+        
+        if (allWorlds.lenght === 0) {
+            return res.status(404).json(
+                { 
+                    success: false,
+                    message: 'Todo el poder de un dios y aún no has creado nigún mundo, ya te vale.',
+                }
+            );
+        }
+
+        return res.status(201).json(
+            { 
+                success: true,
+                message: '¿Que mundo quieres visitar?.',
+                data: allWorlds
+            }
+        );
+    } catch (error) {
+        return res.status(501).json(
+            { 
+                success: false,
+                message: 'Algún mago ha saboteado tú búsqueda, estamos trabajando en solucionarlo.',
+                error: error.message
+            }
+        );  
+    }
+};
+
 module.exports = worldController
