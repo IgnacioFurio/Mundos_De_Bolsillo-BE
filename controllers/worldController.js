@@ -1,21 +1,21 @@
-const { Game } = require('../models');
+const { World } = require('../models');
 
-const gameController = {};
+const worldController = {};
 
-gameController.createGame = async (req,res) => {
+worldController.createWorld = async (req,res) => {
     try {
-        const { title, description} = req.body;
+        const { name, description } = req.body;
 
-        if (title === "") {
+        if (name === "") {
             return res.status(428).json({
                 succes: false,
-                message: "¿Que clase de partida no tiene un nombre?"
+                message: "¿Un mundo sin nombre?, primera vez que lo veo."
             });
         }
 
-        const newGame = await Game.create(
+        const newWorld = await World.create(
             {
-                title: title,
+                name: name,
                 description: description
             }
         );
@@ -23,30 +23,30 @@ gameController.createGame = async (req,res) => {
         return res.status(201).json(
             { 
                 success: true,
-                message: `Ya puedes comenzar a crear nuevas historias en ${newGame.title}.`,
-                data: newGame
+                message: `Ya puedes comenzar a poblar ${newWorld.name} con personajes y lugares especiales.`,
+                data: newWorld
             }
         );
     } catch (error) {
         return res.status(501).json(
             { 
                 success: false,
-                message: 'Parece que tus enemigos no quieren que empieces una nueva partida.',
+                message: 'Algo ha impedido que creemos tu mundo, por favor vuelve a intentarlo.',
                 error: error.message
             }
         );  
     }
 };
 
-gameController.getAllGames = async (req,res) => {
+worldController.getAllWorlds = async (req,res) => {
     try {
-        const allGames = await Game.findAll();
+        const allWorlds = await World.findAll();
         
-        if (allGames.lenght === 0) {
+        if (allWorlds.lenght === 0) {
             return res.status(404).json(
                 { 
                     success: false,
-                    message: 'Estamos buscando minuciosamente pero no logramos encontrar ninguna partida en la que juegues.',
+                    message: 'Todo el poder de un dios y aún no has creado nigún mundo, ya te vale.',
                 }
             );
         }
@@ -54,8 +54,8 @@ gameController.getAllGames = async (req,res) => {
         return res.status(201).json(
             { 
                 success: true,
-                message: '¿A que jugaremos hoy?.',
-                data: allGames
+                message: '¿Que mundo quieres visitar?.',
+                data: allWorlds
             }
         );
     } catch (error) {
@@ -69,31 +69,31 @@ gameController.getAllGames = async (req,res) => {
     }
 };
 
-gameController.updateGame = async (req,res) => {
+worldController.updateWorld = async (req,res) => {
     try {
-        const { id,title, description } = req.body
+        const { id, name, description } = req.body
 
         if (id === "") {
             return res.status(409).json(
                 { 
                     success: false,
-                    message: 'No hemos sido capaces de encontrar la partida que buscas, pero seguiremos mirando en nuestras estanterías.',
+                    message: 'Nuestros archivos no muestran registros de tal mundo.',
                 }
             ); 
         };
         
-        if (title === "") {
+        if (name === "") {
             return res.status(409).json(
                 { 
                     success: false,
-                    message: '¿Como se te ocurre quitarle el nombre a la partida?, lo sentimos, pero no podemos permitirlo.',
+                    message: 'Un mundo sin nombre es como un verano sin helados.',
                 }
             ); 
         };
 
-        const updateGame = await Game.update(
+        const updateWorld = await World.update(
             {
-                title: title,
+                name: name,
                 description: description
             },
             {
@@ -104,8 +104,8 @@ gameController.updateGame = async (req,res) => {
         return res.status(200).json(
             {
                 success: true,
-                message: 'Estamos procediendo a guardar tu nueva información.',
-                data: updateGame
+                message: `Vamos a dejar la nueva información actualizada de ${name} en su estante.`,
+                data: updateWorld
             }
         );  
 
@@ -113,39 +113,39 @@ gameController.updateGame = async (req,res) => {
         return res.status(501).json(
             { 
                 success: false,
-                message: 'Algo esta impidiendo que podamos cambiar los datos de la partida.',
+                message: 'Hay alguna clase de protección que nos impide avanzar de momento.',
                 error: error.message
             }
         ); 
     }
 };
 
-gameController.deleteGame = async (req,res) => {
+worldController.deleteWorld = async (req,res) => {
     try {
-        const { game_id } = req.body
+        const { world_id } = req.body
 
-        const findGame = await Game.findByPk(game_id);
+        const findWorld = await World.findByPk(world_id);
 
-        if (!findGame) {
+        if (!findWorld) {
             return res.status(404).json(
                 { 
                     success: false,
-                    message: 'No hemos encontrado registros de tal partida.',
+                    message: '¡Vaya!, no hay registros de tal mundo en nuestras estanterías.',
                 }
             ); 
         }
 
-        const deleteGame = await Game.destroy({
+        const deleteWorld = await World.destroy({
             where: {
-                id: game_id
+                id: world_id
             }
         });
 
         return res.status(200).json(
             {
                 success: true,
-                message: 'Nos hemos desecho de todo rastro de tu partida, mantendremos el secreto.',
-                data: deleteGame
+                message: `Gracias por usar nuestro rayo destructor, ahora vamos a destruir toda prueba acerca de la existencia de cierto mundo.`,
+                data: deleteWorld
             }
         );  
 
@@ -160,4 +160,4 @@ gameController.deleteGame = async (req,res) => {
     }
 };
 
-module.exports = gameController;
+module.exports = worldController

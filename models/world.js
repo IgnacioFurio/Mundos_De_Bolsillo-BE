@@ -20,8 +20,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   World.init({
-    name: DataTypes.STRING,
-    description: DataTypes.STRING
+    name: DataTypes.STRING(),
+    description: DataTypes.TEXT()
   }, {
     sequelize,
     modelName: 'World',
