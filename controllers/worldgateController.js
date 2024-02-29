@@ -52,7 +52,7 @@ worldgateController.getWorldGateByGameId = async (req,res) => {
             attributes: { exclude: [ "id", "game_id", "world_id", "createdAt", "updatedAt"]},
             include: {
                 model: World,
-                attributes: { exclude: ["id", "createdAt", "updatedAt"]}
+                attributes: { exclude: ["createdAt", "updatedAt"]}
             }
         });
         
