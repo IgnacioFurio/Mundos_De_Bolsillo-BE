@@ -1,4 +1,4 @@
-const { WorldGate } = require('../models');
+const { WorldGate, World } = require('../models');
 
 const worldgateController = {};
 
@@ -37,6 +37,37 @@ worldgateController.createWorldGate = async (req,res) => {
             { 
                 success: false,
                 message: 'No logramos establecer una conexión estable con el mundo que buscas, porfavor sigue intentándolo más tarde.',
+                error: error.message
+            }
+        );  
+    }
+};
+
+worldgateController.getWorldGateByGameId = async (req,res) => {
+    try {
+        const { game_id } = req.body
+
+        const worldgatesByGame = await WorldGate.findAll({ 
+            where: { game_id: game_id }, 
+            attributes: { exclude: [ "id", "game_id", "world_id", "createdAt", "updatedAt"]},
+            include: {
+                model: World,
+                attributes: { exclude: ["id", "createdAt", "updatedAt"]}
+            }
+        });
+        
+        return res.status(201).json(
+            { 
+                success: true,
+                message: 'Estos son los mundos a los que se pueden acceder en la partida.',
+                data: worldgatesByGame
+            }
+        );
+    } catch (error) {
+        return res.status(501).json(
+            { 
+                success: false,
+                message: 'Algún mago ha saboteado tú búsqueda, estamos trabajando en solucionarlo.',
                 error: error.message
             }
         );  
