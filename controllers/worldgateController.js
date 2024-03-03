@@ -74,4 +74,49 @@ worldgateController.getWorldGateByGameId = async (req,res) => {
     }
 };
 
+worldgateController.updateWorldGate = async (req,res) => {
+    try {
+        const { id, game_id, world_id } = req.body
+
+        if (!/^\d+$/.test(game_id)) {
+            return res.status(428).json({
+                succes: false,
+                message: "Para decirte si hay portales o no necesitaremos saber primero en que partida buscar."
+            });
+        }else if (!/^\d+$/.test(world_id)) {
+            return res.status(428).json({
+                succes: false,
+                message: "¿No estabas aquí para asignar algún portal a la partida?"
+            });
+        }
+
+        const updateWorldGate = await WorldGate.update(
+            {
+                game_id: game_id,
+                world_id: world_id
+            },
+            {
+                where: {id: id}
+            }
+        );
+
+        return res.status(200).json(
+            {
+                success: true,
+                message: `Portales reestructurados satisfactoriamente.`,
+                data: updateWorldGate
+            }
+        );  
+
+    } catch (error) {
+        return res.status(501).json(
+            { 
+                success: false,
+                message: 'Hay alguna clase de protección que nos impide avanzar de momento.',
+                error: error.message
+            }
+        ); 
+    }
+};
+
 module.exports = worldgateController;
