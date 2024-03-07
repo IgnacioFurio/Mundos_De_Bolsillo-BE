@@ -121,11 +121,12 @@ worldgateController.updateWorldGate = async (req,res) => {
 
 worldgateController.deleteWorldGate = async (req,res) => {
     try {
-        const { id } = req.body
+        const { game_id, world_id } = req.body
 
         const deleteWorldGate = await WorldGate.destroy({
             where: {
-                id: id
+                game_id: game_id,
+                world_id: world_id
             }
         });
 
