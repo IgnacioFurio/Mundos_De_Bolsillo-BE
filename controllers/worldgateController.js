@@ -18,18 +18,33 @@ worldgateController.createWorldGate = async (req,res) => {
             });
         }
 
-        const newWorldGate = await WorldGate.create(
-            {
+        const worldGates = await WorldGate.findAll({
+            where: {
                 game_id: game_id,
                 world_id: world_id
             }
-        );
+        });
+
+        if (worldGates.length != 0) {
+            return res.status(201).json(
+                { 
+                    success: true,
+                    message: `Ya existe una conexión con este mundo.`,
+                    data: worldGates
+                }
+            );
+        };
+
+        const newWorlGate = await WorldGate.create({
+                game_id: game_id,
+                world_id: world_id
+            });
 
         return res.status(201).json(
             { 
                 success: true,
                 message: `Puerta de acceso al mundo establecida, ahora ya puedes acceder a los datos de este.`,
-                data: newWorldGate
+                data: newWorlGate  
             }
         );
     } catch (error) {
