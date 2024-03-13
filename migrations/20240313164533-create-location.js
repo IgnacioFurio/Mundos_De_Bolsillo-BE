@@ -13,7 +13,12 @@ module.exports = {
         type: Sequelize.STRING
       },
       world_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Worlds",
+          key:"id",
+          allowNull: false
+        }
       },
       description: {
         type: Sequelize.TEXT
