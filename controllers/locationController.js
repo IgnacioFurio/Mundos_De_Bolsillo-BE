@@ -8,17 +8,15 @@ locationController.getLocationsByWorldId = async (req,res) => {
 
         let locationByWorldId = [];
 
-        for (let i = 0; i < world_id.length; i++) {
-            console.log(world_id[i]);
-            
+        for (let i = 0; i < world_id.length; i++) {            
             let location = await Location.findAll({ 
                 where: { world_id: world_id[i] },
-                order: [['name', 'ASC']]
             });
 
             locationByWorldId.push(location);
         };
-        locationByWorldId.sort()
+
+        locationByWorldId.sort();
         
         return res.status(201).json(
             { 
