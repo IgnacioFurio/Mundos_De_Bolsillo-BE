@@ -12,11 +12,13 @@ locationController.getLocationsByWorldId = async (req,res) => {
             console.log(world_id[i]);
             
             let location = await Location.findAll({ 
-                where: { world_id: world_id[i] }
+                where: { world_id: world_id[i] },
+                order: [['name', 'ASC']]
             });
 
             locationByWorldId.push(location);
         };
+        locationByWorldId.sort()
         
         return res.status(201).json(
             { 
