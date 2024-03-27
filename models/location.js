@@ -17,6 +17,13 @@ module.exports = (sequelize, DataTypes) => {
           foreignKey: "world_id"
         }
       );
+
+      Location.hasMany(
+        models.Scene,
+        {
+          foreignKey: "location_id"
+        }
+      ); 
     }
   }
   Location.init({
