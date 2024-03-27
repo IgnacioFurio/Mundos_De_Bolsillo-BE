@@ -17,6 +17,13 @@ module.exports = (sequelize, DataTypes) => {
           foreignKey: "world_id"
         }
       );
+
+      Character.hasMany(
+        models.CharacterScene,
+        {
+          foreignKey: "character_id"
+        }
+      );
     }
   }
   Character.init({
