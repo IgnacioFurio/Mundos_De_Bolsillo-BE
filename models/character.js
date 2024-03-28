@@ -24,6 +24,13 @@ module.exports = (sequelize, DataTypes) => {
           foreignKey: "character_id"
         }
       );
+      
+      Character.hasMany(
+        models.Location,
+        {
+          foreignKey: "delievered_by_character_id"
+        }
+      );
     }
   }
   Character.init({
