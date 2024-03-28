@@ -17,6 +17,48 @@ module.exports = (sequelize, DataTypes) => {
           foreignKey: "world_id"
         }
       );
+
+      Location.hasMany(
+        models.Scene,
+        {
+          foreignKey: "location_id"
+        }
+      ); 
+
+      Location.hasMany(
+        models.Secret,
+        {
+          foreignKey: "about_location_id"
+        }
+      );
+      
+      Location.hasMany(
+        models.Secret,
+        {
+          foreignKey: "from_location_id"
+        }
+      );
+      
+      Location.hasMany(
+        models.Secret,
+        {
+          foreignKey: "heard_on_location_id"
+        }
+      );
+      
+      Location.hasMany(
+        models.PlaceOfInterest,
+        {
+          foreignKey: "location_id"
+        }
+      );
+      
+      Location.hasMany(
+        models.PlaceOfInterest,
+        {
+          foreignKey: "interesting_location_id"
+        }
+      );
     }
   }
   Location.init({

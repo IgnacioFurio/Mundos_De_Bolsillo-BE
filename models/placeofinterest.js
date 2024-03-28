@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class World extends Model {
+  class PlaceOfInterest extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,34 +11,27 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      World.hasMany(
-        models.WorldGate,
+      PlaceOfInterest.belongsTo(
+        models.Location,
         {
-          foreignKey: "world_id"
+          foreignKey: "location_id"
         }
       );
       
-      World.hasMany(
+      PlaceOfInterest.belongsTo(
         models.Location,
         {
-          foreignKey: "world_id"
+          foreignKey: "interesting_location_id"
         }
-      );      
-      
-      World.hasMany(
-        models.Character,
-        {
-          foreignKey: "world_id"
-        }
-      );      
+      );
     }
   }
-  World.init({
-    name: DataTypes.STRING(),
-    description: DataTypes.TEXT()
+  PlaceOfInterest.init({
+    location_id: DataTypes.INTEGER,
+    interesting_location_id: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'World',
+    modelName: 'PlaceOfInterest',
   });
-  return World;
+  return PlaceOfInterest;
 };
