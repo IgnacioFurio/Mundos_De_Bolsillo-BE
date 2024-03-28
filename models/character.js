@@ -31,6 +31,20 @@ module.exports = (sequelize, DataTypes) => {
           foreignKey: "delievered_by_character_id"
         }
       );
+
+      Character.hasMany(
+        models.Secret,
+        {
+          foreignKey: "about_character_id"
+        }
+      );
+      
+      Character.hasMany(
+        models.Secret,
+        {
+          foreignKey: "told_from_character_id"
+        }
+      );
     }
   }
   Character.init({
