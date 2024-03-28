@@ -20,7 +20,7 @@ module.exports = {
         references: {
           model: "Worlds",
           key:"id",
-          allowNull: false
+          allowNull: true
         }
       },
       from_location_id: {
