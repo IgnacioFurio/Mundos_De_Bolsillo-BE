@@ -23,6 +23,21 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
+      type: {
+        type: Sequelize.STRING
+      },
+      government: {
+        type: Sequelize.STRING
+      },
+      population: {
+        type: Sequelize.INTEGER
+      },
+      defenses: {
+        type: Sequelize.STRING
+      },
+      commerce: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
