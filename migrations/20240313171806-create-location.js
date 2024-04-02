@@ -30,7 +30,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       population: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       defenses: {
         type: Sequelize.STRING

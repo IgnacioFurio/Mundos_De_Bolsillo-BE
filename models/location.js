@@ -67,7 +67,7 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.TEXT,
     type: DataTypes.STRING,
     government: DataTypes.STRING,
-    population: DataTypes.INTEGER,
+    population: DataTypes.STRING,
     defenses: DataTypes.STRING,
     commerce: DataTypes.STRING
 
