@@ -4,34 +4,47 @@ const locationController = {};
 
 locationController.createLocation = async (req,res) => {
     try {
-        const { name, description,  } = req.body;
+        const { name, world_id, description, type, government, population, defenses, commerce  } = req.body;
 
         if (name === "") {
             return res.status(428).json({
                 succes: false,
-                message: "¿Un mundo sin nombre?, primera vez que lo veo."
+                message: "Tendremos que llamar de alguna manera al nuevo sitio."
+            });
+        };
+
+        if (world_id === "") {
+            return res.status(428).json({
+                succes: false,
+                message: "Parece que se te ha olvidado informar del mundo dónde podemos encontrar este sitio."
             });
         }
 
-        const newWorld = await World.create(
+        const newLocation = await Location.create(
             {
                 name: name,
-                description: description
+                world_id: parseInt(world_id),
+                description: description,
+                type: type,
+                government: government,
+                population: population,
+                defenses: defenses,
+                commerce: commerce
             }
         );
 
         return res.status(201).json(
             { 
                 success: true,
-                message: `Ya puedes comenzar a poblar ${newWorld.name} con personajes y lugares especiales.`,
-                data: newWorld
+                message: `${newLocation.name} puede recibir visitas ahora.`,
+                data: newLocation
             }
         );
     } catch (error) {
         return res.status(501).json(
             { 
                 success: false,
-                message: 'Algo ha impedido que creemos tu mundo, por favor vuelve a intentarlo.',
+                message: 'Algo ha impedido que creemos esta localización, por favor vuelve a intentarlo.',
                 error: error.message
             }
         );  
