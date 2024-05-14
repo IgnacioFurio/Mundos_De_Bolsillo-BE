@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       );
       
       Character.hasMany(
-        models.Location,
+        models.Secret,
         {
           foreignKey: "delievered_by_character_id"
         }
