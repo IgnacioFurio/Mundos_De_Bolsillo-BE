@@ -85,4 +85,58 @@ locationController.getLocationsByWorldId = async (req,res) => {
     }
 };
 
+locationController.updateLocation = async (req,res) => {
+    try {
+        const { id, name, world_id, description, type, government, population, defenses, commerce  } = req.body;
+
+        if (id === "") {
+            return res.status(428).json({
+                succes: false,
+                message: "Necesitamos saber a que sitio quieres aplicarle modificaciones."
+            });
+        };
+        
+        if (name === "") {
+            return res.status(428).json({
+                succes: false,
+                message: "Ya que cambias el nombre, al menos ponle uno nuevo."
+            });
+        };
+
+        const updateLocation = await Location.update(
+            {
+                name: name,
+                world_id: parseInt(world_id),
+                description: description,
+                type: type,
+                government: government,
+                population: population,
+                defenses: defenses,
+                commerce: commerce
+            },
+            {
+                where: {id: parseInt(id)}
+            }
+        );
+
+
+        return res.status(200).json(
+            {
+                success: true,
+                message: `${name} ha sufrido una actualización.`,
+                data: updateLocation
+            }
+        );  
+
+    } catch (error) {
+        return res.status(501).json(
+            { 
+                success: false,
+                message: 'Algo no ha salido como se esperaba, deberías intentarlo de nuevo.',
+                error: error.message
+            }
+        ); 
+    }
+};
+
 module.exports = locationController;
