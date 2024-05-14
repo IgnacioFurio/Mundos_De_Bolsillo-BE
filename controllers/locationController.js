@@ -139,4 +139,49 @@ locationController.updateLocation = async (req,res) => {
     }
 };
 
+locationController.deleteLocation = async (req,res) => {
+    try {
+        const { id } = req.body
+
+        if (id === "") {
+            return res.status(428).json({
+                succes: false,
+                message: "No podemos eliminar ningún lugar sin tener alguna referencia."
+            });
+        };
+
+        const deleteLocation = await Location.destroy({
+            where: {
+                id: parseInt(id)
+            }
+        });
+
+        if(!deleteLocation){
+            return res.status(404).json(
+                {
+                    success: false,
+                    message: `No encontramos tal sitio en nuestros registros.`,
+                }
+            );
+        }
+
+        return res.status(200).json(
+            {
+                success: true,
+                message: `Hemos eliminado todo registro relacionado con tal lugar.`,
+                data: deleteLocation
+            }
+        );  
+
+    } catch (error) {
+        return res.status(501).json(
+            { 
+                success: false,
+                message: 'Algo esta evitando que podamos destruir el sitio que nos has pedido.',
+                error: error.message
+            }
+        ); 
+    }
+};
+
 module.exports = locationController;
