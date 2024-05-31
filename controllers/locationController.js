@@ -51,6 +51,37 @@ locationController.createLocation = async (req,res) => {
     }
 };
 
+locationController.getAllLocations = async (req,res) => {
+    try {
+        const allLocations = await Location.findAll();
+        
+        if (allLocations.lenght === 0) {
+            return res.status(404).json(
+                { 
+                    success: false,
+                    message: '¡Vaya!, parece que no has registrado ninguna localización todavía.',
+                }
+            );
+        }
+
+        return res.status(201).json(
+            { 
+                success: true,
+                message: '¿A dónde vamos a viajar esta vez?.',
+                data: allLocations
+            }
+        );
+    } catch (error) {
+        return res.status(501).json(
+            { 
+                success: false,
+                message: 'Algún mago ha saboteado tú búsqueda, estamos trabajando en solucionarlo.',
+                error: error.message
+            }
+        );  
+    }
+};
+
 locationController.getLocationsByWorldId = async (req,res) => {
     try {
         const { world_id } = req.body;
