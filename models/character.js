@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
       Character.belongsTo(
         models.Location,
         {
-          foreignKey: "last_location_id"
+          foreignKey: "last_location_known_id"
         }
       );
 

@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
       Location.hasMany(
         models.Character,
         {
-          foreignKey: "last_location_id"
+          foreignKey: "last_location_known_id"
         }
       );
 
