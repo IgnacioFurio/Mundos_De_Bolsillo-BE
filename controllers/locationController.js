@@ -1,4 +1,4 @@
-const { Location } = require('../models');
+const { Location, World } = require('../models');
 
 const locationController = {};
 
@@ -91,12 +91,16 @@ locationController.getLocationsByWorldId = async (req,res) => {
         for (let i = 0; i < world_id.length; i++) {            
             let location = await Location.findAll({ 
                 where: { world_id: world_id[i] },
+                include: {
+                    model: World,
+                    attributes: { exclude: ["id", "description", "createdAt", "updatedAt"]}
+                }
             });
 
             locationByWorldId.push(location);
         };
 
-        locationByWorldId.sort();
+        locationByWorldId.sort((a,b)=>{a - b});
         
         return res.status(201).json(
             { 
