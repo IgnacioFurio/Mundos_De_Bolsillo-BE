@@ -11,10 +11,20 @@ characterController.getCharacterByWorldId = async (req,res) => {
         for (let i = 0; i < world_id.length; i++) {    
             let character = await Character.findAll({ 
                 where: { world_id: world_id[i] },
-                include: {
-                    model: World,
-                    attributes: { exclude: ["id", "description", "createdAt", "updatedAt"]}
-                },
+                include: [
+                    {
+                        model: World,
+                        attributes: { exclude: ["id", "description", "createdAt", "updatedAt"]}
+                    },
+                    {
+                        model: Location,
+                        as: "fromLocation",
+                    },
+                    {
+                        model: Location,
+                        as: "lastLocationKnown",
+                    },
+                ]
             });
 
             characterByWorldId.push(character);
