@@ -96,4 +96,44 @@ characterController.getCharacterByWorldId = async (req,res) => {
     }
 };
 
+characterController.deleteCharacter = async (req,res) => {
+    try {
+        const { character_id } = req.body
+
+        const findCharacter = await Character.findByPk(character_id);
+
+        if (!findCharacter) {
+            return res.status(404).json(
+                { 
+                    success: false,
+                    message: 'No hemos encontrado registros de tal personaje.',
+                }
+            ); 
+        }
+
+        const deleteCharacter = await Character.destroy({
+            where: {
+                id: character_id
+            }
+        });
+
+        return res.status(200).json(
+            {
+                success: true,
+                message: `Nos hemos desecho de ${findCharacter.name}, ahora mantendremos el secreto entre nosotros.`,
+                data: findCharacter
+            }
+        );  
+
+    } catch (error) {
+        return res.status(501).json(
+            { 
+                success: false,
+                message: 'Estamos teniendo problemas para localizar al personaje.',
+                error: error.message
+            }
+        ); 
+    }
+};
+
 module.exports = characterController

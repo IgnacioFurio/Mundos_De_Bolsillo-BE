@@ -5,6 +5,6 @@ const router = require('express').Router();
 router.post('/post', characterController.createCharacter)
 router.post('/get', characterController.getCharacterByWorldId)
 // router.put('/put', gameController.updateGame)
-// router.delete('/delete', gameController.deleteGame)
+router.delete('/delete', characterController.deleteCharacter)
 
 module.exports = router;
