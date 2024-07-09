@@ -96,6 +96,60 @@ characterController.getCharacterByWorldId = async (req,res) => {
     }
 };
 
+characterController.updateCharacter = async (req,res) => {
+    try {
+        const { id, name, description, world_id, from_location_id, last_location_known_id } = req.body
+
+        if (id === "") {
+            return res.status(409).json(
+                { 
+                    success: false,
+                    message: 'No hemos sido capaces de encontrar al personaje que buscas, pero seguiremos mirando en nuestras estanterías.',
+                }
+            ); 
+        };
+        
+        if (name === "") {
+            return res.status(409).json(
+                { 
+                    success: false,
+                    message: '¿No has nombrado al personaje?, lo sentimos, pero no podemos permitirlo.',
+                }
+            ); 
+        };
+
+        const updateCharacter = await Character.update(
+            {
+                name: name,
+                description: description,
+                world_id: world_id,
+                from_location_id: from_location_id,
+                last_location_known_id: last_location_known_id
+            },
+            {
+                where: {id: id}
+            }
+        );
+
+        return res.status(200).json(
+            {
+                success: true,
+                message: 'Estamos procediendo a guardar tu nueva información.',
+                data: updateCharacter
+            }
+        );  
+
+    } catch (error) {
+        return res.status(501).json(
+            { 
+                success: false,
+                message: `Algo esta impidiendo que podamos cambiar la información de ${updateCharacter.name}.`,
+                error: error.message
+            }
+        ); 
+    }
+};
+
 characterController.deleteCharacter = async (req,res) => {
     try {
         const { character_id } = req.body
