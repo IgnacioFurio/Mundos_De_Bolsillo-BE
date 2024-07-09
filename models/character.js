@@ -18,6 +18,22 @@ module.exports = (sequelize, DataTypes) => {
         }
       );
 
+      Character.belongsTo(
+        models.Location,
+        {
+          foreignKey: "from_location_id",
+          as: "fromLocation"
+        }
+      );
+      
+      Character.belongsTo(
+        models.Location,
+        {
+          foreignKey: "last_location_known_id",
+          as: "lastLocationKnown"
+        }
+      );
+
       Character.hasMany(
         models.CharacterScene,
         {

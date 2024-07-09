@@ -24,10 +24,20 @@ module.exports = {
         }
       },
       from_location_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Locations",
+          key:"id",
+          allowNull: true
+        }
       },
       last_location_known_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Locations",
+          key:"id",
+          allowNull: true
+        }
       },
       createdAt: {
         allowNull: false,

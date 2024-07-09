@@ -11,6 +11,8 @@ module.exports = {
     await queryInterface.bulkInsert('WorldGates', [
       {game_id: 1, world_id: 1,createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"},
       {game_id: 1, world_id: 2,createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"},
+      {game_id: 2, world_id: 1,createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"},
+      {game_id: 2, world_id: 2,createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"},
       ], {});
     },
 
