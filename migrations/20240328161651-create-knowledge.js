@@ -20,7 +20,7 @@ module.exports = {
         references: {
           model: "Characters",
           key:"id",
-          allowNull: false
+          allowNull: true
         }
       },
       told_from_character_id: {
@@ -28,7 +28,7 @@ module.exports = {
         references: {
           model: "Characters",
           key:"id",
-          allowNull: false
+          allowNull: true
         }
       },
       about_location_id: {
@@ -36,7 +36,7 @@ module.exports = {
         references: {
           model: "Locations",
           key:"id",
-          allowNull: false
+          allowNull: true
         }
       },
       from_location_id: {
@@ -44,7 +44,7 @@ module.exports = {
         references: {
           model: "Locations",
           key:"id",
-          allowNull: false
+          allowNull: true
         }
       },
       heard_on_location_id: {
@@ -52,7 +52,7 @@ module.exports = {
         references: {
           model: "Locations",
           key:"id",
-          allowNull: false
+          allowNull: true
         }
       },
       createdAt: {
