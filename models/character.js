@@ -42,21 +42,21 @@ module.exports = (sequelize, DataTypes) => {
       );
       
       Character.hasMany(
-        models.Secret,
+        models.Knowledge,
         {
           foreignKey: "delievered_by_character_id"
         }
       );
 
       Character.hasMany(
-        models.Secret,
+        models.Knowledge,
         {
           foreignKey: "about_character_id"
         }
       );
       
       Character.hasMany(
-        models.Secret,
+        models.Knowledge,
         {
           foreignKey: "told_from_character_id"
         }

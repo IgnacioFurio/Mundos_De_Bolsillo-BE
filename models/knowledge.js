@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Secret extends Model {
+  class Knowledge extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,35 +11,35 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Secret.belongsTo(
+      Knowledge.belongsTo(
         models.Character,
         {
           foreignKey: "about_character_id"
         }
       );
       
-      Secret.belongsTo(
+      Knowledge.belongsTo(
         models.Character,
         {
           foreignKey: "told_from_character_id"
         }
       );
       
-      Secret.belongsTo(
+      Knowledge.belongsTo(
         models.Location,
         {
           foreignKey: "about_location_id"
         }
       );
       
-      Secret.belongsTo(
+      Knowledge.belongsTo(
         models.Location,
         {
           foreignKey: "from_location_id"
         }
       );
       
-      Secret.belongsTo(
+      Knowledge.belongsTo(
         models.Location,
         {
           foreignKey: "heard_on_location_id"
@@ -47,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
       );
     }
   }
-  Secret.init({
+  Knowledge.init({
     title: DataTypes.STRING,
     description: DataTypes.TEXT,
     about_character_id: DataTypes.INTEGER,
@@ -57,7 +57,7 @@ module.exports = (sequelize, DataTypes) => {
     heard_on_location_id: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'Secret',
+    modelName: 'Knowledge',
   });
-  return Secret;
+  return Knowledge;
 };
