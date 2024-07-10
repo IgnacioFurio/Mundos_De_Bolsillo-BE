@@ -50,6 +50,7 @@ module.exports = (sequelize, DataTypes) => {
   Knowledge.init({
     title: DataTypes.STRING,
     description: DataTypes.TEXT,
+    veracity: DataTypes.BOOLEAN,
     about_character_id: DataTypes.INTEGER,
     told_from_character_id: DataTypes.INTEGER,
     about_location_id: DataTypes.INTEGER,

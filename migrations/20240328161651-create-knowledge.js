@@ -15,6 +15,9 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
+      veracity: {
+        type: Sequelize.BOOLEAN
+      },
       about_character_id: {
         type: Sequelize.INTEGER,
         references: {
