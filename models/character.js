@@ -44,7 +44,8 @@ module.exports = (sequelize, DataTypes) => {
       Character.hasMany(
         models.Knowledge,
         {
-          foreignKey: "about_character_id"
+          foreignKey: "about_character_id",
+          as: "aboutCharacter"
         }
       );
       
