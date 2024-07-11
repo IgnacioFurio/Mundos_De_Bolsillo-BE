@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       Knowledge.belongsTo(
         models.Character,
         {
-          foreignKey: "told_from_character_id"
+          foreignKey: "heard_from_character_id"
         }
       );
       
@@ -29,13 +29,6 @@ module.exports = (sequelize, DataTypes) => {
         models.Location,
         {
           foreignKey: "about_location_id"
-        }
-      );
-      
-      Knowledge.belongsTo(
-        models.Location,
-        {
-          foreignKey: "from_location_id"
         }
       );
       
