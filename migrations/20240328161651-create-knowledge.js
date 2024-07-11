@@ -15,20 +15,23 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
+      veracity: {
+        type: Sequelize.BOOLEAN
+      },
       about_character_id: {
         type: Sequelize.INTEGER,
         references: {
           model: "Characters",
           key:"id",
-          allowNull: false
+          allowNull: true
         }
       },
-      told_from_character_id: {
+      heard_from_character_id: {
         type: Sequelize.INTEGER,
         references: {
           model: "Characters",
           key:"id",
-          allowNull: false
+          allowNull: true
         }
       },
       about_location_id: {
@@ -36,15 +39,7 @@ module.exports = {
         references: {
           model: "Locations",
           key:"id",
-          allowNull: false
-        }
-      },
-      from_location_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "Locations",
-          key:"id",
-          allowNull: false
+          allowNull: true
         }
       },
       heard_on_location_id: {
@@ -52,7 +47,7 @@ module.exports = {
         references: {
           model: "Locations",
           key:"id",
-          allowNull: false
+          allowNull: true
         }
       },
       createdAt: {
