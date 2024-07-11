@@ -51,7 +51,7 @@ module.exports = (sequelize, DataTypes) => {
       Location.hasMany(
         models.Knowledge,
         {
-          foreignKey: "from_location_id"
+          foreignKey: "heard_on_location_id"
         }
       );
       
