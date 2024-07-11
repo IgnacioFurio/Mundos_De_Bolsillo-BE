@@ -26,7 +26,7 @@ module.exports = {
           allowNull: true
         }
       },
-      told_from_character_id: {
+      heard_from_character_id: {
         type: Sequelize.INTEGER,
         references: {
           model: "Characters",
@@ -35,14 +35,6 @@ module.exports = {
         }
       },
       about_location_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "Locations",
-          key:"id",
-          allowNull: true
-        }
-      },
-      from_location_id: {
         type: Sequelize.INTEGER,
         references: {
           model: "Locations",

@@ -52,9 +52,8 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.TEXT,
     veracity: DataTypes.BOOLEAN,
     about_character_id: DataTypes.INTEGER,
-    told_from_character_id: DataTypes.INTEGER,
+    heard_from_character_id: DataTypes.INTEGER,
     about_location_id: DataTypes.INTEGER,
-    from_location_id: DataTypes.INTEGER,
     heard_on_location_id: DataTypes.INTEGER
   }, {
     sequelize,
