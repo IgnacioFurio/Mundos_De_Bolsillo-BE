@@ -22,7 +22,7 @@ knowledgeController.getKnowledgeByCharacterId = async(req,res) => {
         return res.status(201).json(
             { 
                 success: true,
-                message: 'Aquí tienes todo o que sabemos acerca de .',
+                message: `Aquí tienes toda la información que hemos encontrado.`,
                 data: allKnowledge
             }
         );
