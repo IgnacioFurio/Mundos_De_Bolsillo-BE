@@ -1,4 +1,4 @@
-const { Knowledge } = require('../models');
+const { Knowledge, Character, Location } = require('../models');
 
 const knowledgeController = {};
 
@@ -7,9 +7,32 @@ knowledgeController.getKnowledgeByCharacterId = async(req,res) => {
         const { about_character_id } = req.body;
 
         const allKnowledge = await Knowledge.findAll({
-            where: { about_character_id: about_character_id }
+            where: { about_character_id: about_character_id },
+            include: [
+                {
+                    model: Character,
+                    as: "aboutCharacter",
+                    attributes: {exclude: ["description", "world_id", "from_location_id", "last_location_known_id"] }
+                },
+                {
+                    model: Character,
+                    as: "heardFromCharacter",
+                    attributes: {exclude: ["description", "world_id", "from_location_id", "last_location_known_id"] }
+                },
+                {
+                    model: Location,
+                    as: "aboutLocation",
+                    attributes: {exclude: ["description", "world_id", "type", "government", "population", "defenses", "commerce"] }
+                },
+                {
+                    model: Location,
+                    as: "heardOnLocation",
+                    attributes: {exclude: ["description", "world_id", "type", "government", "population", "defenses", "commerce"] }
+                },
+            ]
         });
         
+
         if (allKnowledge.lenght === 0) {
             return res.status(404).json(
                 { 
@@ -17,7 +40,9 @@ knowledgeController.getKnowledgeByCharacterId = async(req,res) => {
                     message: 'Estamos buscando minuciosamente pero no logramos encontrar el conocimiento que necesitas.',
                 }
             );
-        }
+        };
+
+        allKnowledge.sort((a,b)=>{a - b});
 
         return res.status(201).json(
             { 

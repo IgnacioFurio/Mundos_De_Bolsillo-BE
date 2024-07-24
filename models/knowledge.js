@@ -22,21 +22,24 @@ module.exports = (sequelize, DataTypes) => {
       Knowledge.belongsTo(
         models.Character,
         {
-          foreignKey: "heard_from_character_id"
+          foreignKey: "heard_from_character_id",
+          as: "heardFromCharacter"
         }
       );
       
       Knowledge.belongsTo(
         models.Location,
         {
-          foreignKey: "about_location_id"
+          foreignKey: "about_location_id",
+          as: "aboutLocation"
         }
       );
       
       Knowledge.belongsTo(
         models.Location,
         {
-          foreignKey: "heard_on_location_id"
+          foreignKey: "heard_on_location_id",
+          as: "heardOnLocation"
         }
       );
     }

@@ -44,14 +44,16 @@ module.exports = (sequelize, DataTypes) => {
       Location.hasMany(
         models.Knowledge,
         {
-          foreignKey: "about_location_id"
+          foreignKey: "about_location_id",
+          as: "aboutLocation"
         }
       );
 
       Location.hasMany(
         models.Knowledge,
         {
-          foreignKey: "heard_on_location_id"
+          foreignKey: "heard_on_location_id",
+          as: "heardOnLocation"
         }
       );
       
