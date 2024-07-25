@@ -68,14 +68,6 @@ worldgateController.getWorldGateByGameId = async (req,res) => {
             include: {
                 model: World,
                 attributes: { exclude: ["createdAt", "updatedAt"]},
-                include: [{
-                    model: Location,
-                    attributes: { exclude: ["createdAt", "updatedAt"]},
-                },
-                {
-                    model: Character,
-                    attributes: { exclude: ["createdAt", "updatedAt"]}
-                }],
             }
         });
         
