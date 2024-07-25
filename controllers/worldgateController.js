@@ -1,4 +1,4 @@
-const { WorldGate, World } = require('../models');
+const { WorldGate, World, Location, Character } = require('../models');
 
 const worldgateController = {};
 
@@ -62,12 +62,20 @@ worldgateController.getWorldGateByGameId = async (req,res) => {
     try {
         const { game_id } = req.body
 
-        const worldgatesByGame = await WorldGate.findAll({ 
+        const worldGatesByGame = await WorldGate.findAll({ 
             where: { game_id: game_id }, 
             attributes: { exclude: [ "id", "game_id", "world_id", "createdAt", "updatedAt"]},
             include: {
                 model: World,
-                attributes: { exclude: ["createdAt", "updatedAt"]}
+                attributes: { exclude: ["createdAt", "updatedAt"]},
+                include: [{
+                    model: Location,
+                    attributes: { exclude: ["createdAt", "updatedAt"]},
+                },
+                {
+                    model: Character,
+                    attributes: { exclude: ["createdAt", "updatedAt"]}
+                }],
             }
         });
         
@@ -75,7 +83,7 @@ worldgateController.getWorldGateByGameId = async (req,res) => {
             { 
                 success: true,
                 message: 'Estos son los mundos a los que se pueden acceder en la partida.',
-                data: worldgatesByGame
+                data: worldGatesByGame
             }
         );
     } catch (error) {
