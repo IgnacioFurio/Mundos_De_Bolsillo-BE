@@ -2,6 +2,38 @@ const { Knowledge, Character, Location } = require('../models');
 
 const knowledgeController = {};
 
+knowledgeController.createKnowledge = async (req,res) => {
+    try {
+        const { title, description, about_character_id, heard_from_character_id, about_location_id, heard_on_location_id, veracity } = req.body;
+
+        const knowledge = await Knowledge.create({
+                title: title,
+                description: description,
+                about_character_id: about_character_id,
+                heard_from_character_id: heard_from_character_id,
+                about_location_id: about_location_id,
+                heard_on_location_id: heard_on_location_id,
+                veracity: veracity,
+            });
+
+        return res.status(201).json(
+            { 
+                success: true,
+                message: `Añadida nueva pieza de conocimiento.`,
+                data: knowledge  
+            }
+        );
+    } catch (error) {
+        return res.status(501).json(
+            { 
+                success: false,
+                message: 'Algo ha fallado en el proceso de creación, vuelve a intentarlo más tarde',
+                error: error.message
+            }
+        );  
+    }
+};
+
 knowledgeController.getKnowledgeByCharacterId = async(req,res) => {
     try {
         const { about_character_id } = req.body;
