@@ -1,4 +1,4 @@
-const { Character, World, Location } = require('../models');
+const { Character, World, Location, Knowledge } = require('../models');
 
 const characterController = {};
 
@@ -70,6 +70,10 @@ characterController.getCharacterByWorldId = async (req,res) => {
                         model: Location,
                         as: "lastLocationKnown",
                     },
+                    {
+                        model: Knowledge,
+                        as: "aboutCharacter"
+                    }
                 ]
             });
 

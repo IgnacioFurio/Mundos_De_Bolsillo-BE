@@ -14,35 +14,32 @@ module.exports = (sequelize, DataTypes) => {
       Knowledge.belongsTo(
         models.Character,
         {
-          foreignKey: "about_character_id"
+          foreignKey: "about_character_id",
+          as: "aboutCharacter"
         }
       );
       
       Knowledge.belongsTo(
         models.Character,
         {
-          foreignKey: "told_from_character_id"
+          foreignKey: "heard_from_character_id",
+          as: "heardFromCharacter"
         }
       );
       
       Knowledge.belongsTo(
         models.Location,
         {
-          foreignKey: "about_location_id"
+          foreignKey: "about_location_id",
+          as: "aboutLocation"
         }
       );
       
       Knowledge.belongsTo(
         models.Location,
         {
-          foreignKey: "from_location_id"
-        }
-      );
-      
-      Knowledge.belongsTo(
-        models.Location,
-        {
-          foreignKey: "heard_on_location_id"
+          foreignKey: "heard_on_location_id",
+          as: "heardOnLocation"
         }
       );
     }

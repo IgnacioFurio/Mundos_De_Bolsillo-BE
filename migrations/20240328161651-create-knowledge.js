@@ -16,7 +16,8 @@ module.exports = {
         type: Sequelize.TEXT
       },
       veracity: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        allowNull: true
       },
       about_character_id: {
         type: Sequelize.INTEGER,
