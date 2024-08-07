@@ -94,4 +94,49 @@ knowledgeController.getKnowledgeByCharacterId = async(req,res) => {
     }
 };
 
+knowledgeController.updateKnowledge = async (req,res) => {
+    try {
+        const { id, title, description, about_character_id, heard_from_character_id, about_location_id, heard_on_location_id, veracity } = req.body;
+
+        if (!/^\d+$/.test(id)) {
+            return res.status(428).json({
+                succes: false,
+                message: "Parece que el conocimiento que buscas que no está registrado."
+            });
+        };
+
+        const updateKnowledge = await Knowledge.update(
+            {
+                title: title,
+                description: description,
+                about_character_id: about_character_id,
+                heard_from_character_id: heard_from_character_id,
+                about_location_id: about_location_id,
+                heard_on_location_id: heard_on_location_id,
+                veracity: veracity
+            },
+            {
+                where: {id: id}
+            }
+        );
+
+        return res.status(200).json(
+            {
+                success: true,
+                message: `Conocimiento actualizado correctamente.`,
+                data: updateKnowledge
+            }
+        );  
+
+    } catch (error) {
+        return res.status(501).json(
+            { 
+                success: false,
+                message: 'Hay alguna clase de protección que nos impide avanzar de momento.',
+                error: error.message
+            }
+        ); 
+    }
+};
+
 module.exports = knowledgeController
