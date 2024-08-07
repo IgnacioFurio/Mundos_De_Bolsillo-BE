@@ -139,4 +139,53 @@ knowledgeController.updateKnowledge = async (req,res) => {
     }
 };
 
+knowledgeController.deleteKnowledge = async (req,res) => {
+    try {
+        const { id } = req.body
+
+        if (id === "") {
+            return res.status(428).json({
+                succes: false,
+                message: "No podemos eliminar ningún lugar sin tener alguna referencia."
+            });
+        };
+
+        const findKnowledge = await Knowledge.findOne({
+            where: {id: parseInt(id)}
+        });
+
+        if (!findKnowledge) {
+            return res.status(404).json(
+                { 
+                    success: false,
+                    message: 'No hemos encontrado registros de tal pieza de conocimiento.',
+                }
+            ); 
+        }
+
+        const deleteKnowlege = await Knowledge.destroy({
+            where: {
+                id: id
+            }
+        });
+
+        return res.status(200).json(
+            {
+                success: true,
+                message: 'Será como si nunca hubiera existido tal información.',
+                data: deleteKnowlege
+            }
+        );  
+
+    } catch (error) {
+        return res.status(501).json(
+            { 
+                success: false,
+                message: 'Un ente malvado esta evitando que nos deshagamos de la información.',
+                error: error.message
+            }
+        ); 
+    }
+};
+
 module.exports = knowledgeController
