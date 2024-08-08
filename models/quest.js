@@ -14,21 +14,24 @@ module.exports = (sequelize, DataTypes) => {
       Quest.belongsTo(
         models.Character,
         {
-          foreignKey: "delievered_by_character_id"
+          foreignKey: "delievered_by_character_id",
+          as: "delieveredByCharacter"
         }
       );
       
       Quest.belongsTo(
         models.Location,
         {
-          foreignKey: "got_in_location_id"
+          foreignKey: "got_in_location_id",
+          as: "gotInLocation"
         }
       );
       
       Quest.belongsTo(
         models.Location,
         {
-          foreignKey: "happens_in_location_id"
+          foreignKey: "happens_in_location_id",
+          as: "happensInLocation"
         }
       );
     }

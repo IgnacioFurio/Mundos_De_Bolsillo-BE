@@ -23,7 +23,7 @@ module.exports = {
         references: {
           model: "Characters",
           key:"id",
-          allowNull: false
+          allowNull: true
         }
       },
       got_in_location_id: {
@@ -31,7 +31,7 @@ module.exports = {
         references: {
           model: "Locations",
           key:"id",
-          allowNull: false
+          allowNull: true
         }
       },
       happens_in_location_id: {
@@ -39,7 +39,7 @@ module.exports = {
         references: {
           model: "Locations",
           key:"id",
-          allowNull: false
+          allowNull: true
         }
       },
       createdAt: {
