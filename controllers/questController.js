@@ -42,57 +42,57 @@ questController.createQuest = async (req,res) => {
     }
 };
 
-// questController.getCharacterByWorldId = async (req,res) => {
-//     try {
-//         const { world_id } = req.body;
+questController.getQuestByWorldId = async (req,res) => {
+    try {
+        const { world_id } = req.body;
         
-//         let characterByWorldId = [];
+        let questByWorldId = [];
         
-//         for (let i = 0; i < world_id.length; i++) {    
-//             let character = await Character.findAll({ 
-//                 where: { world_id: world_id[i] },
-//                 include: [
-//                     {
-//                         model: World,
-//                         attributes: { exclude: ["id", "description", "createdAt", "updatedAt"]}
-//                     },
-//                     {
-//                         model: Location,
-//                         as: "fromLocation",
-//                     },
-//                     {
-//                         model: Location,
-//                         as: "lastLocationKnown",
-//                     },
-//                     {
-//                         model: Knowledge,
-//                         as: "aboutCharacter"
-//                     }
-//                 ]
-//             });
+        for (let i = 0; i < world_id.length; i++) {    
+            let character = await Quest.findAll({ 
+                where: { world_id: world_id[i] },
+                include: [
+                    {
+                        model: World,
+                        attributes: { exclude: ["id", "description", "createdAt", "updatedAt"]}
+                    },
+                    {
+                        model: Location,
+                        as: "fromLocation",
+                    },
+                    {
+                        model: Location,
+                        as: "lastLocationKnown",
+                    },
+                    {
+                        model: Knowledge,
+                        as: "aboutCharacter"
+                    }
+                ]
+            });
 
-//             characterByWorldId.push(character);
-//         };
+            characterByWorldId.push(character);
+        };
 
-//         characterByWorldId.sort((a,b)=>{a - b});
+        characterByWorldId.sort((a,b)=>{a - b});
         
-//         return res.status(201).json(
-//             { 
-//                 success: true,
-//                 message: 'Aquí están los personajes con los que interactuar en la partida.',
-//                 data: characterByWorldId
-//             }
-//         );
-//     } catch (error) {
-//         return res.status(501).json(
-//             { 
-//                 success: false,
-//                 message: 'Algún mago ha saboteado tú búsqueda, estamos trabajando en solucionarlo.',
-//                 error: error.message
-//             }
-//         );  
-//     }
-// };
+        return res.status(201).json(
+            { 
+                success: true,
+                message: 'Aquí están los personajes con los que interactuar en la partida.',
+                data: characterByWorldId
+            }
+        );
+    } catch (error) {
+        return res.status(501).json(
+            { 
+                success: false,
+                message: 'Algún mago ha saboteado tú búsqueda, estamos trabajando en solucionarlo.',
+                error: error.message
+            }
+        );  
+    }
+};
 
 // questController.updateCharacter = async (req,res) => {
 //     try {
