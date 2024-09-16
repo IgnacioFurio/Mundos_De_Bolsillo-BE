@@ -56,6 +56,22 @@ module.exports = (sequelize, DataTypes) => {
           as: "heardFromCharacter"
         }
       );
+      
+      Character.hasMany(
+        models.Quest,
+        {
+          foreignKey: "delievered_by_character_id",
+          as: "delieveredByCharacter"
+        }
+      );
+
+      Character.hasMany(
+        models.Character,
+        {
+          foreignKey: "character_id",
+          as: "character"
+        }
+      );
     }
   }
   Character.init({

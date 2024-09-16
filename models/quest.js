@@ -34,6 +34,14 @@ module.exports = (sequelize, DataTypes) => {
           as: "happensInLocation"
         }
       );
+
+      Quest.hasMany(
+        models.Characterquest,
+        {
+          foreignKey: "quest_id",
+          as: "quest"
+        }
+      );
     }
   }
   Quest.init({

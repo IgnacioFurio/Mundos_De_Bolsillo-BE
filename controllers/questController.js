@@ -1,4 +1,4 @@
-const { Quest } = require('../models');
+const { Quest, Character, Location, Characterquest } = require('../models');
 
 const questController = {};
 
@@ -46,26 +46,14 @@ questController.getQuestByCharacterId = async (req,res) => {
     try {
         const { character_id } = req.body;
                 
-        let getQuestByCharacterId = await Quest.findAll({ 
+        let getQuestByCharacterId = await Characterquest.findAll({ 
             where: { character_id: character_id },
-            // include: [
-            //     {
-            //         model: World,
-            //         attributes: { exclude: ["id", "description", "createdAt", "updatedAt"]}
-            //     },
-            //     {
-            //         model: Location,
-            //         as: "fromLocation",
-            //     },
-            //     {
-            //         model: Location,
-            //         as: "lastLocationKnown",
-            //     },
-            //     {
-            //         model: Knowledge,
-            //         as: "aboutCharacter"
-            //     }
-            // ]
+            include: [
+                {
+                    model: Quest,
+                    as: "quest",
+                },
+            ]
         });
 
         
