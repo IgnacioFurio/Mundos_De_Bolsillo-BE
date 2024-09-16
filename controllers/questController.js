@@ -42,45 +42,38 @@ questController.createQuest = async (req,res) => {
     }
 };
 
-questController.getQuestByWorldId = async (req,res) => {
+questController.getQuestByCharacterId = async (req,res) => {
     try {
-        const { world_id } = req.body;
-        
-        let questByWorldId = [];
-        
-        for (let i = 0; i < world_id.length; i++) {    
-            let character = await Quest.findAll({ 
-                where: { world_id: world_id[i] },
-                include: [
-                    {
-                        model: World,
-                        attributes: { exclude: ["id", "description", "createdAt", "updatedAt"]}
-                    },
-                    {
-                        model: Location,
-                        as: "fromLocation",
-                    },
-                    {
-                        model: Location,
-                        as: "lastLocationKnown",
-                    },
-                    {
-                        model: Knowledge,
-                        as: "aboutCharacter"
-                    }
-                ]
-            });
+        const { character_id } = req.body;
+                
+        let getQuestByCharacterId = await Quest.findAll({ 
+            where: { character_id: character_id },
+            // include: [
+            //     {
+            //         model: World,
+            //         attributes: { exclude: ["id", "description", "createdAt", "updatedAt"]}
+            //     },
+            //     {
+            //         model: Location,
+            //         as: "fromLocation",
+            //     },
+            //     {
+            //         model: Location,
+            //         as: "lastLocationKnown",
+            //     },
+            //     {
+            //         model: Knowledge,
+            //         as: "aboutCharacter"
+            //     }
+            // ]
+        });
 
-            characterByWorldId.push(character);
-        };
-
-        characterByWorldId.sort((a,b)=>{a - b});
         
         return res.status(201).json(
             { 
                 success: true,
-                message: 'Aquí están los personajes con los que interactuar en la partida.',
-                data: characterByWorldId
+                message: 'Aquí están las misiones.',
+                data: getQuestByCharacterId
             }
         );
     } catch (error) {
