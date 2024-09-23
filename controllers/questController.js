@@ -52,6 +52,20 @@ questController.getQuestByCharacterId = async (req,res) => {
                 {
                     model: Quest,
                     as: "quest",
+                    include: [
+                        {
+                            model: Character,
+                            as: "delieveredByCharacter"
+                        },
+                        {
+                            model: Location,
+                            as: "gotInLocation"
+                        },
+                        {
+                            model: Location,
+                            as: "happensInLocation"
+                        },
+                    ]
                 },
             ]
         });
