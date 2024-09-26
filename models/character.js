@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
       Character.hasMany(
         models.CharacterScene,
         {
-          foreignKey: "character_id"
+          foreignKey: "character_id",
         }
       );
 
@@ -54,6 +54,22 @@ module.exports = (sequelize, DataTypes) => {
         {
           foreignKey: "heard_from_character_id",
           as: "heardFromCharacter"
+        }
+      );
+      
+      Character.hasMany(
+        models.Quest,
+        {
+          foreignKey: "delievered_by_character_id",
+          as: "delieveredByCharacter"
+        }
+      );
+
+      Character.hasMany(
+        models.Characterquest,
+        {
+          foreignKey: "character_id",
+          as: "character"
         }
       );
     }

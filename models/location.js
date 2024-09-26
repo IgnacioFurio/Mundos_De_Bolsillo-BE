@@ -70,6 +70,22 @@ module.exports = (sequelize, DataTypes) => {
           foreignKey: "interesting_location_id"
         }
       );
+      
+      Location.hasMany(
+        models.Quest,
+        {
+          foreignKey: "got_in_location_id",
+          as: "gotInLocation"
+        }
+      );
+      
+      Location.hasMany(
+        models.Quest,
+        {
+          foreignKey: "happens_in_location_id",
+          as: "happensInLocation"
+        }
+      );
     }
   }
   Location.init({

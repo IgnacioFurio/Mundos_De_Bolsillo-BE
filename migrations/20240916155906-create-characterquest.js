@@ -2,44 +2,27 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Quests', {
+    await queryInterface.createTable('Characterquests', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING
-      },
-      goal: {
-        type: Sequelize.TEXT
-      },
-      status: {
-        type: Sequelize.BOOLEAN
-      },
-      delievered_by_character_id: {
+      character_id: {
         type: Sequelize.INTEGER,
         references: {
           model: "Characters",
           key:"id",
-          allowNull: true
+          allowNull: false
         }
       },
-      got_in_location_id: {
+      quest_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: "Locations",
+          model: "Quests",
           key:"id",
-          allowNull: true
-        }
-      },
-      happens_in_location_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "Locations",
-          key:"id",
-          allowNull: true
+          allowNull: false
         }
       },
       createdAt: {
@@ -53,6 +36,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Quests');
+    await queryInterface.dropTable('Characterquests');
   }
 };
