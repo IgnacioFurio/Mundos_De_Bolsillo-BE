@@ -32,7 +32,7 @@ questController.createQuest = async (req,res) => {
             }
         );
     } catch (error) {
-        return res.status(501).json(
+        return res.status(500).json(
             { 
                 success: false,
                 message: 'Parece que tus enemigos no quieren que crees a más personajes.',
