@@ -4,7 +4,7 @@ const questController = {};
 
 questController.createQuest = async (req,res) => {
     try {
-        const { name, goal, status, delievered_by_character_id, got_in_location_id, happens_in_location_id } = req.body;
+        const { name, goal, status, delievered_by_character_id, got_in_location_id, happens_in_location_id, characters_id } = req.body;
 
         if (name === "") {
             return res.status(428).json({
@@ -23,6 +23,14 @@ questController.createQuest = async (req,res) => {
                 happens_in_location_id: happens_in_location_id
             }
         );
+
+        const questId = newQuest.id
+
+        const charactersInQuest = characters_id.map((characterId) => {
+            return { character_id: characterId, quest_id: questId }
+        });
+
+        await Characterquest.bulkCreate(charactersInQuest)
 
         return res.status(201).json(
             { 
