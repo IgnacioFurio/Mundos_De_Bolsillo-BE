@@ -97,6 +97,39 @@ questController.getQuestByCharacterId = async (req,res) => {
     }
 };
 
+questController.getCharactersByQuestId = async (req,res) => {
+    try {
+        const { quest_id } = req.body;
+                
+        let getCharactersByQuestId = await Characterquest.findAll({ 
+            where: { quest_id: quest_id },
+            include: [
+                {
+                    model: Character,
+                    as: "character",
+                },
+            ]
+        });
+
+        
+        return res.status(201).json(
+            { 
+                success: true,
+                message: 'Aquí están las misiones.',
+                data: getCharactersByQuestId
+            }
+        );
+    } catch (error) {
+        return res.status(501).json(
+            { 
+                success: false,
+                message: 'Algún mago ha saboteado tú búsqueda, estamos trabajando en solucionarlo.',
+                error: error.message
+            }
+        );  
+    }
+};
+
 // questController.updateCharacter = async (req,res) => {
 //     try {
 //         const { id, name, description, world_id, from_location_id, last_location_known_id } = req.body
