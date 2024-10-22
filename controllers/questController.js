@@ -1,3 +1,4 @@
+const { where } = require('sequelize');
 const { Quest, Character, Location, Characterquest } = require('../models');
 
 const questController = {};
@@ -130,59 +131,51 @@ questController.getCharactersByQuestId = async (req,res) => {
     }
 };
 
-// questController.updateCharacter = async (req,res) => {
-//     try {
-//         const { id, name, description, world_id, from_location_id, last_location_known_id } = req.body
+questController.updateQuest = async (req,res) => {
+    try {
+        const { id, name, goal, status, delievered_by_character_id, got_in_location_id, happens_in_location_id, characters_id } = req.body;
 
-//         if (id === "") {
-//             return res.status(409).json(
-//                 { 
-//                     success: false,
-//                     message: 'No hemos sido capaces de encontrar al personaje que buscas, pero seguiremos mirando en nuestras estanterías.',
-//                 }
-//             ); 
-//         };
+        const updateQuest = await Quest.update(
+            {
+                name: name,
+                goal: goal,
+                status: status,
+                delievered_by_character_id: delievered_by_character_id, 
+                got_in_location_id: got_in_location_id, 
+                happens_in_location_id: happens_in_location_id,
+            },
+            {
+                where: {id: id}
+            }
+        );
+
+        const deleteCharacterQuest = await Characterquest.destroy(
+            {where: {quest_id: id}}
+        );      
         
-//         if (name === "") {
-//             return res.status(409).json(
-//                 { 
-//                     success: false,
-//                     message: '¿No has nombrado al personaje?, lo sentimos, pero no podemos permitirlo.',
-//                 }
-//             ); 
-//         };
+        const charactersInQuest = characters_id.map((characterId) => {
+            return { character_id: characterId, quest_id: id }
+        });
+        await Characterquest.bulkCreate(charactersInQuest)
 
-//         const updateCharacter = await Character.update(
-//             {
-//                 name: name,
-//                 description: description,
-//                 world_id: world_id,
-//                 from_location_id: from_location_id,
-//                 last_location_known_id: last_location_known_id
-//             },
-//             {
-//                 where: {id: id}
-//             }
-//         );
+        return res.status(200).json(
+            {
+                success: true,
+                message: 'Estamos procediendo a guardar tu nueva información.',
+                data: charactersInQuest
+            }
+        );  
 
-//         return res.status(200).json(
-//             {
-//                 success: true,
-//                 message: 'Estamos procediendo a guardar tu nueva información.',
-//                 data: updateCharacter
-//             }
-//         );  
-
-//     } catch (error) {
-//         return res.status(501).json(
-//             { 
-//                 success: false,
-//                 message: `Algo esta impidiendo que podamos cambiar la información de ${updateCharacter.name}.`,
-//                 error: error.message
-//             }
-//         ); 
-//     }
-// };
+    } catch (error) {
+        return res.status(501).json(
+            { 
+                success: false,
+                message: `Algo esta impidiendo que podamos cambiar la información de ${updateQuest.name}.`,
+                error: error.message
+            }
+        ); 
+    }
+};
 
 questController.deleteQuest = async (req,res) => {
     try {
