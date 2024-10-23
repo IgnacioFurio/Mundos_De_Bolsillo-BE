@@ -161,7 +161,7 @@ questController.updateQuest = async (req,res) => {
         return res.status(200).json(
             {
                 success: true,
-                message: 'Estamos procediendo a guardar tu nueva información.',
+                message: 'Hemos actualizado la información de la misión.',
                 data: charactersInQuest
             }
         );  
