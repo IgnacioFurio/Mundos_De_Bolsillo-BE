@@ -85,8 +85,15 @@ locationController.getAllLocations = async (req,res) => {
 locationController.getLocationsByWorldId = async (req,res) => {
     try {
         const { world_id } = req.body;
-
-        let locationByWorldId = [];
+        
+        if (!Array.isArray(world_id) || world_id.lenght === 0) {
+            return res.status(400).json({
+                success: false,
+                message: 'Si no sabemos en que mundos buscar, no podremos darte más información.'
+            });
+        };
+        
+        let locationByWorldId = [];        
 
         for (let i = 0; i < world_id.length; i++) {            
             let location = await Location.findAll({ 
@@ -100,7 +107,7 @@ locationController.getLocationsByWorldId = async (req,res) => {
             locationByWorldId.push(location);
         };
 
-        locationByWorldId.sort((a,b)=>{a - b});
+        locationByWorldId.sort((a,b)=>{a.name - b.name});
         
         return res.status(201).json(
             { 
@@ -110,7 +117,7 @@ locationController.getLocationsByWorldId = async (req,res) => {
             }
         );
     } catch (error) {
-        return res.status(501).json(
+        return res.status(500).json(
             { 
                 success: false,
                 message: 'Algún mago ha saboteado tú búsqueda, estamos trabajando en solucionarlo.',
