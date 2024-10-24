@@ -1,4 +1,4 @@
-const { Scene, CharacterScene } = require('../models');
+const { Scene, CharacterScene, Location } = require('../models');
 
 const sceneController = {};
 
@@ -47,36 +47,48 @@ sceneController.createScene = async (req,res) => {
     }
 };
 
-// sceneController.getAllScenesByGameId = async (req,res) => {
-//     try {
-//         const allScenes = await Scene.findAll();
+sceneController.getAllScenesByGameId = async (req,res) => {
+    try {
+        const { game_id } = req.body;
         
-//         if (allWorlds.lenght === 0) {
-//             return res.status(404).json(
-//                 { 
-//                     success: false,
-//                     message: 'Todo el poder de un dios y aún no has creado nigún mundo, ya te vale.',
-//                 }
-//             );
-//         }
+        const allScenes = await Scene.findAll(
+            {
+                where: {id: game_id},
+                include: [
+                    {
+                        model: Location,
+                        as: "location"
+                    }
+                ]
+            }
+        );
+        
+        if (allScenes.lenght === 0) {
+            return res.status(404).json(
+                { 
+                    success: false,
+                    message: 'Todo el poder de un dios y aún no has creado nigún mundo, ya te vale.',
+                }
+            );
+        }
 
-//         return res.status(201).json(
-//             { 
-//                 success: true,
-//                 message: '¿Que mundo quieres visitar?.',
-//                 data: allWorlds
-//             }
-//         );
-//     } catch (error) {
-//         return res.status(501).json(
-//             { 
-//                 success: false,
-//                 message: 'Algún mago ha saboteado tú búsqueda, estamos trabajando en solucionarlo.',
-//                 error: error.message
-//             }
-//         );  
-//     }
-// };
+        return res.status(201).json(
+            { 
+                success: true,
+                message: 'Aquí tienes todas las escenas creadas para la partida.',
+                data: allScenes
+            }
+        );
+    } catch (error) {
+        return res.status(501).json(
+            { 
+                success: false,
+                message: 'Algún mago ha saboteado tú búsqueda, estamos trabajando en solucionarlo.',
+                error: error.message
+            }
+        );  
+    }
+};
 
 // sceneController.updateWorld = async (req,res) => {
 //     try {
