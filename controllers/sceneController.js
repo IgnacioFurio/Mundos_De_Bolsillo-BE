@@ -1,4 +1,4 @@
-const { Scene } = require('../models');
+const { Scene, CharacterScene } = require('../models');
 
 const sceneController = {};
 
@@ -20,6 +20,13 @@ sceneController.createScene = async (req,res) => {
                 location_id: location_id,
             }
         );
+
+        const sceneID = newScene.id
+
+        const charactersInScene = characters_id.map((characterId) => {
+            return { character_id: characterId, scene_id: sceneID }
+        });
+        await CharacterScene.bulkCreate(charactersInScene);
 
         return res.status(201).json(
             { 
