@@ -4,7 +4,7 @@ const sceneController = {};
 
 sceneController.createScene = async (req,res) => {
     try {
-        const { title, description, location_id, characters_id } = req.body;
+        const { title, description, location_id, game_id, characters_id } = req.body;
 
         if (title === "") {
             return res.status(428).json({
@@ -18,6 +18,7 @@ sceneController.createScene = async (req,res) => {
                 title: title,
                 description: description,
                 location_id: location_id,
+                game_id: game_id,
             }
         );
 
