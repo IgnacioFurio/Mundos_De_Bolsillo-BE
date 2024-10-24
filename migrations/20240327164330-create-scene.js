@@ -23,6 +23,14 @@ module.exports = {
           allowNull: false
         }
       },
+      game_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Games",
+          key:"id",
+          allowNull: false
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

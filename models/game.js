@@ -17,6 +17,13 @@ module.exports = (sequelize, DataTypes) => {
           foreignKey: "game_id"
         }
       );
+      
+      Game.hasMany(
+        models.Scene,
+        {
+          foreignKey: "game_id"
+        }
+      );
     }
   }
   Game.init({

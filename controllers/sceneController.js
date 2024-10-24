@@ -46,9 +46,9 @@ sceneController.createScene = async (req,res) => {
     }
 };
 
-// sceneController.getAllWorlds = async (req,res) => {
+// sceneController.getAllScenesByGameId = async (req,res) => {
 //     try {
-//         const allWorlds = await World.findAll();
+//         const allScenes = await Scene.findAll();
         
 //         if (allWorlds.lenght === 0) {
 //             return res.status(404).json(
