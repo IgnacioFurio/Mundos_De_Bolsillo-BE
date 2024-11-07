@@ -67,7 +67,7 @@ sceneController.getAllScenesByGameId = async (req,res) => {
             return res.status(404).json(
                 { 
                     success: false,
-                    message: 'Todo el poder de un dios y aún no has creado nigún mundo, ya te vale.',
+                    message: 'Hemos registrado todo el archivo y no hemos podido encontrar escenas.',
                 }
             );
         }
