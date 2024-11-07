@@ -1,4 +1,5 @@
-const { Scene, CharacterScene, Location } = require('../models');
+const { where } = require('sequelize');
+const { Scene, CharacterScene, Location, Character } = require('../models');
 
 const sceneController = {};
 
@@ -58,7 +59,16 @@ sceneController.getAllScenesByGameId = async (req,res) => {
                     {
                         model: Location,
                         as: "location"
-                    }
+                    },
+                    {
+                        model: CharacterScene,
+                        include: [
+                            {
+                                model: Character,
+                                as: "characterId"
+                            }
+                        ]
+                    },
                 ]
             }
         );

@@ -21,7 +21,8 @@ module.exports = (sequelize, DataTypes) => {
       CharacterScene.belongsTo(
         models.Character,
         {
-          foreignKey: "character_id"
+          foreignKey: "character_id",
+          as: "characterId"
         }
       );
     }
