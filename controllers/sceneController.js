@@ -100,56 +100,58 @@ sceneController.getAllScenesByGameId = async (req,res) => {
     }
 };
 
-// sceneController.updateWorld = async (req,res) => {
-//     try {
-//         const { id, name, description } = req.body
+sceneController.updateScene = async (req,res) => {
+    try {
+        const { id, title, description, location_id, game_id, characters_id } = req.body
 
-//         if (id === "") {
-//             return res.status(409).json(
-//                 { 
-//                     success: false,
-//                     message: 'Nuestros archivos no muestran registros de tal mundo.',
-//                 }
-//             ); 
-//         };
+        if (id === "") {
+            return res.status(409).json(
+                { 
+                    success: false,
+                    message: 'Nuestros archivos no muestran registros de tal escena.',
+                }
+            ); 
+        };
+
+        const updateScene = await Scene.update(
+            {
+                title: title,
+                description: description,
+                location_id: location_id,
+                game_id: game_id
+            },
+            {
+                where: {id: id}
+            }
+        );
+
+        const deleteCharacterScene = await CharacterScene.destroy(
+            {where: {scene_id: id}}
+        );      
         
-//         if (name === "") {
-//             return res.status(409).json(
-//                 { 
-//                     success: false,
-//                     message: 'Un mundo sin nombre es como un verano sin helados.',
-//                 }
-//             ); 
-//         };
+        const charactersInScene = characters_id.map((characterId) => {
+            return { character_id: characterId, scene_id: id }
+        });
+        await CharacterScene.bulkCreate(charactersInScene)
 
-//         const updateWorld = await World.update(
-//             {
-//                 name: name,
-//                 description: description
-//             },
-//             {
-//                 where: {id: id}
-//             }
-//         );
+        return res.status(200).json(
+            {
+                success: true,
+                message: `Vamos a dejar la nueva información actualizada de ${title} en su estante.`,
+                data: updateScene
+            }
+        );  
 
-//         return res.status(200).json(
-//             {
-//                 success: true,
-//                 message: `Vamos a dejar la nueva información actualizada de ${name} en su estante.`,
-//                 data: updateWorld
-//             }
-//         );  
-
-//     } catch (error) {
-//         return res.status(501).json(
-//             { 
-//                 success: false,
-//                 message: 'Hay alguna clase de protección que nos impide avanzar de momento.',
-//                 error: error.message
-//             }
-//         ); 
-//     }
-// };
+    } catch (error) {
+        return res.status(501).json(
+            { 
+                success: false,
+                message: 'Hay alguna clase de protección que nos impide avanzar de momento.',
+                error: error.message
+            }
+        ); 
+    }
+};
 
 // sceneController.deleteWorld = async (req,res) => {
 //     try {
