@@ -54,7 +54,7 @@ sceneController.getAllScenesByGameId = async (req,res) => {
         
         const allScenes = await Scene.findAll(
             {
-                where: {id: game_id},
+                where: {game_id: game_id},
                 include: [
                     {
                         model: Location,
