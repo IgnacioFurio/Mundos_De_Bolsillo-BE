@@ -153,44 +153,45 @@ sceneController.updateScene = async (req,res) => {
     }
 };
 
-// sceneController.deleteWorld = async (req,res) => {
-//     try {
-//         const { world_id } = req.body
+sceneController.deleteScene = async (req,res) => {
+    try {
+        const { scene_id } = req.body
 
-//         const findWorld = await World.findByPk(world_id);
+        
+        const deleteCharacterScene = await CharacterScene.destroy(
+            {where: {scene_id: scene_id}}
+        );
+        
+        const deleteScene = await Scene.destroy(
+            {where: {id: scene_id}}
+        );     
 
-//         if (!findWorld) {
-//             return res.status(404).json(
-//                 { 
-//                     success: false,
-//                     message: '¡Vaya!, no hay registros de tal mundo en nuestras estanterías.',
-//                 }
-//             ); 
-//         }
+        if ( !deleteCharacterScene || !deleteScene) {
+            return res.status(404).json(
+                {
+                    success: true,
+                    message: `La escena que buscas no está registrada.`,
+                }
+            ); 
+        }
 
-//         const deleteWorld = await World.destroy({
-//             where: {
-//                 id: world_id
-//             }
-//         });
+        return res.status(200).json(
+            {
+                success: true,
+                message: `La escena "${deleteScene.title}" ha sido eliminada de todo registro.`,
+                data: deleteScene
+            }
+        );  
 
-//         return res.status(200).json(
-//             {
-//                 success: true,
-//                 message: `Gracias por usar nuestro rayo destructor, ahora vamos a destruir toda prueba acerca de la existencia de cierto mundo.`,
-//                 data: deleteWorld
-//             }
-//         );  
-
-//     } catch (error) {
-//         return res.status(501).json(
-//             { 
-//                 success: false,
-//                 message: 'Un ente malvado esta evitando que nos deshagamos de tu partida.',
-//                 error: error.message
-//             }
-//         ); 
-//     }
-// };
+    } catch (error) {
+        return res.status(501).json(
+            { 
+                success: false,
+                message: 'Estamos teniendo problemas para acceder a la información de la escena.',
+                error: error.message
+            }
+        ); 
+    }
+};
 
 module.exports = sceneController
