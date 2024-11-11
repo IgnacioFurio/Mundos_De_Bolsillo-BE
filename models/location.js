@@ -37,7 +37,8 @@ module.exports = (sequelize, DataTypes) => {
       Location.hasMany(
         models.Scene,
         {
-          foreignKey: "location_id"
+          foreignKey: "location_id",
+          as: "location"
         }
       ); 
 

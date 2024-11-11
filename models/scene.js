@@ -17,11 +17,28 @@ module.exports = (sequelize, DataTypes) => {
           foreignKey: "scene_id"
         }
       );
+    
+      Scene.belongsTo(
+        models.Game,
+        {
+          foreignKey: "game_id"
+        }
+      );
+      
+      Scene.belongsTo(
+        models.Location,
+        {
+          foreignKey: "location_id",
+          as: "location"
+        }
+      );
+
     }
   }
   Scene.init({
     title: DataTypes.STRING,
     description: DataTypes.TEXT,
+    game_id: DataTypes.INTEGER,
     location_id: DataTypes.INTEGER
   }, {
     sequelize,

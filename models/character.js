@@ -38,6 +38,7 @@ module.exports = (sequelize, DataTypes) => {
         models.CharacterScene,
         {
           foreignKey: "character_id",
+          as: "characterId"
         }
       );
 
