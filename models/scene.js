@@ -11,6 +11,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Scene.belongsTo(
+        models.Session,
+        {
+          foreignKey: "session_id"
+        }
+      );
+
       Scene.hasMany(
         models.CharacterScene,
         {
@@ -39,7 +46,8 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     description: DataTypes.TEXT,
     game_id: DataTypes.INTEGER,
-    location_id: DataTypes.INTEGER
+    location_id: DataTypes.INTEGER,
+    session_id: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Scene',
