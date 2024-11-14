@@ -23,6 +23,10 @@ module.exports = {
           allowNull: false
         }
       },
+      session_index: {
+        allowNull: true,
+        type: Sequelize.INTEGER
+      },
       location_id: {
         type: Sequelize.INTEGER,
         references: {

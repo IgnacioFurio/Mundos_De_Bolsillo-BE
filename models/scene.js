@@ -48,6 +48,7 @@ module.exports = (sequelize, DataTypes) => {
     game_id: DataTypes.INTEGER,
     location_id: DataTypes.INTEGER,
     session_id: DataTypes.INTEGER,
+    session_index: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Scene',
