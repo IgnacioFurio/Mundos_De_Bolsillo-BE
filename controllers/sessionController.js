@@ -26,7 +26,8 @@ sessionController.createSession = async (req,res) => {
             
             const scenesAtSession = await Scene.update(
                 { 
-                    session_id: newSession.id
+                    session_id: newSession.id,
+                    session_index: i
                 },
                 {
                     where: {id: scenesAtSessionIds[i]}
