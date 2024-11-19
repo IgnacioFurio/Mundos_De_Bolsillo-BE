@@ -1,11 +1,11 @@
 const { where } = require('sequelize');
-const { Session } = require('../models');
+const { Session, Scene } = require('../models');
 
 const sessionController = {};
 
 sessionController.createSession = async (req,res) => {
     try {
-        const { title, description, game_id } = req.body;
+        const { title, description, game_id, scenesAtSessionIds } = req.body;
 
         if (title === "") {
             return res.status(428).json({
@@ -21,6 +21,20 @@ sessionController.createSession = async (req,res) => {
                 game_id: game_id,
             }
         );
+
+        for (let i = 0; i < scenesAtSessionIds.length; i++) {
+            
+            const scenesAtSession = await Scene.update(
+                { 
+                    session_id: newSession.id
+                },
+                {
+                    where: {id: scenesAtSessionIds[i]}
+                }
+            );
+        };
+
+
 
         return res.status(201).json(
             { 
