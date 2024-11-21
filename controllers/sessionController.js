@@ -150,45 +150,51 @@ sessionController.getAllSessionsByGameId = async (req,res) => {
 //     }
 // };
 
-// sessionController.deleteSession = async (req,res) => {
-//     try {
-//         const { scene_id } = req.body
-
+sessionController.deleteSession = async (req,res) => {
+    try {
+        const { session_id } = req.body
         
-//         const deleteCharacterScene = await CharacterScene.destroy(
-//             {where: {scene_id: scene_id}}
-//         );
+        const scenesAtSession = await Scene.update(
+            { 
+                session_id: null,
+                session_index: null
+            },
+            {
+                where: {session_id: session_id}
+            }
+        );
+
+        const deleteSession = await Session.destroy(
+            {where: {id: session_id}}
+        ); 
         
-//         const deleteScene = await Scene.destroy(
-//             {where: {id: scene_id}}
-//         );     
 
-//         if ( !deleteCharacterScene || !deleteScene) {
-//             return res.status(404).json(
-//                 {
-//                     success: true,
-//                     message: `La escena que buscas no está registrada.`,
-//                 }
-//             ); 
-//         }
+        if ( !deleteSession) {
+            return res.status(404).json(
+                {
+                    success: true,
+                    message: `La sesión que buscas no está registrada.`,
+                }
+            ); 
+        }
 
-//         return res.status(200).json(
-//             {
-//                 success: true,
-//                 message: `La escena "${deleteScene.title}" ha sido eliminada de todo registro.`,
-//                 data: deleteScene
-//             }
-//         );  
+        return res.status(200).json(
+            {
+                success: true,
+                message: `La sesión "${deleteSession.title}" ha sido eliminada de todo registro.`,
+                data: deleteScene
+            }
+        );  
 
-//     } catch (error) {
-//         return res.status(501).json(
-//             { 
-//                 success: false,
-//                 message: 'Estamos teniendo problemas para acceder a la información de la escena.',
-//                 error: error.message
-//             }
-//         ); 
-//     }
-// };
+    } catch (error) {
+        return res.status(501).json(
+            { 
+                success: false,
+                message: 'Estamos teniendo problemas para acceder a la información de la escena.',
+                error: error.message
+            }
+        ); 
+    }
+};
 
 module.exports = sessionController
