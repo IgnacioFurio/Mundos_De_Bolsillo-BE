@@ -55,57 +55,47 @@ sessionController.createSession = async (req,res) => {
     }
 };
 
-// sessionController.getAllSessionsByGameId = async (req,res) => {
-//     try {
-//         const { game_id } = req.body;
+sessionController.getAllSessionsByGameId = async (req,res) => {
+    try {
+        const { game_id } = req.body;
         
-//         const allScenes = await Scene.findAll(
-//             {
-//                 where: {game_id: game_id},
-//                 include: [
-//                     {
-//                         model: Location,
-//                         as: "location"
-//                     },
-//                     {
-//                         model: CharacterScene,
-//                         include: [
-//                             {
-//                                 model: Character,
-//                                 as: "characterId"
-//                             }
-//                         ]
-//                     },
-//                 ]
-//             }
-//         );
+        const allSessions = await Session.findAll(
+            {
+                where: {game_id: game_id},
+                include: [
+                    {
+                        model: Scene,
+                    },
+                ]
+            }
+        );
         
-//         if (allScenes.lenght === 0) {
-//             return res.status(404).json(
-//                 { 
-//                     success: false,
-//                     message: 'Hemos registrado todo el archivo y no hemos podido encontrar escenas.',
-//                 }
-//             );
-//         }
+        if (allSessions.lenght === 0) {
+            return res.status(404).json(
+                { 
+                    success: false,
+                    message: 'Hemos registrado todo el archivo y no hemos podido encontrar sesiones.',
+                }
+            );
+        }
 
-//         return res.status(201).json(
-//             { 
-//                 success: true,
-//                 message: 'Aquí tienes todas las escenas creadas para la partida.',
-//                 data: allScenes
-//             }
-//         );
-//     } catch (error) {
-//         return res.status(501).json(
-//             { 
-//                 success: false,
-//                 message: 'Algún mago ha saboteado tú búsqueda, estamos trabajando en solucionarlo.',
-//                 error: error.message
-//             }
-//         );  
-//     }
-// };
+        return res.status(201).json(
+            { 
+                success: true,
+                message: 'Aquí tienes todas las sesiones creadas para la partida.',
+                data: allSessions
+            }
+        );
+    } catch (error) {
+        return res.status(501).json(
+            { 
+                success: false,
+                message: 'Algún mago ha saboteado tú búsqueda, estamos trabajando en solucionarlo.',
+                error: error.message
+            }
+        );  
+    }
+};
 
 // sessionController.updateSession = async (req,res) => {
 //     try {
