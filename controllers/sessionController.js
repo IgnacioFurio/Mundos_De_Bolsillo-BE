@@ -121,18 +121,23 @@ sessionController.updateSession = async (req,res) => {
             }
         );
 
-        for (let i = 0; i < scenesAtSession.length; i++) {
+        scenesAtSession.map((scene) => {
+            console.log(scene);
             
-            const scenesSession = await Scene.update(
-                { 
-                    session_id: id,
-                    session_index: i
-                },
-                {
-                    where: {id: scenesAtSession[i].id}
-                }
-            );
-        };        
+        });
+
+        // for (let i = 0; i < scenesAtSession.length; i++) {
+            
+        //     const scenesSession = await Scene.update(
+        //         { 
+        //             session_id: id,
+        //             session_index: i
+        //         },
+        //         {
+        //             where: {id: scenesAtSession[i].id}
+        //         }
+        //     );
+        // };        
 
         return res.status(200).json(
             {
