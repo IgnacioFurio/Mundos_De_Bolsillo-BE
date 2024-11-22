@@ -97,58 +97,61 @@ sessionController.getAllSessionsByGameId = async (req,res) => {
     }
 };
 
-// sessionController.updateSession = async (req,res) => {
-//     try {
-//         const { id, title, description, location_id, game_id, characters_id } = req.body
+sessionController.updateSession = async (req,res) => {
+    try {
+        const { id, title, description, game_id, scenesAtSession } = req.body
 
-//         if (id === "") {
-//             return res.status(409).json(
-//                 { 
-//                     success: false,
-//                     message: 'Nuestros archivos no muestran registros de tal escena.',
-//                 }
-//             ); 
-//         };
+        if (id === "") {
+            return res.status(409).json(
+                { 
+                    success: false,
+                    message: 'Nuestros archivos no muestran registros de tal sesión.',
+                }
+            ); 
+        };
 
-//         const updateScene = await Scene.update(
-//             {
-//                 title: title,
-//                 description: description,
-//                 location_id: location_id,
-//                 game_id: game_id
-//             },
-//             {
-//                 where: {id: id}
-//             }
-//         );
+        const updateSession = await Session.update(
+            {
+                title: title,
+                description: description,
+                game_id: game_id
+            },
+            {
+                where: {id: id}
+            }
+        );
 
-//         const deleteCharacterScene = await CharacterScene.destroy(
-//             {where: {scene_id: id}}
-//         );      
-        
-//         const charactersInScene = characters_id.map((characterId) => {
-//             return { character_id: characterId, scene_id: id }
-//         });
-//         await CharacterScene.bulkCreate(charactersInScene)
+        for (let i = 0; i < scenesAtSession.length; i++) {
+            
+            const scenesSession = await Scene.update(
+                { 
+                    session_id: id,
+                    session_index: i
+                },
+                {
+                    where: {id: scenesAtSession[i].id}
+                }
+            );
+        };        
 
-//         return res.status(200).json(
-//             {
-//                 success: true,
-//                 message: `Vamos a dejar la nueva información actualizada de ${title} en su estante.`,
-//                 data: updateScene
-//             }
-//         );  
+        return res.status(200).json(
+            {
+                success: true,
+                message: `Vamos a dejar la nueva información actualizada de ${title} en su estante.`,
+                data: updateSession
+            }
+        );  
 
-//     } catch (error) {
-//         return res.status(501).json(
-//             { 
-//                 success: false,
-//                 message: 'Hay alguna clase de protección que nos impide avanzar de momento.',
-//                 error: error.message
-//             }
-//         ); 
-//     }
-// };
+    } catch (error) {
+        return res.status(501).json(
+            { 
+                success: false,
+                message: 'Hay alguna clase de protección que nos impide avanzar de momento.',
+                error: error.message
+            }
+        ); 
+    }
+};
 
 sessionController.deleteSession = async (req,res) => {
     try {
@@ -169,7 +172,7 @@ sessionController.deleteSession = async (req,res) => {
         ); 
         
 
-        if ( !deleteSession) {
+        if ( !deleteSession ) {
             return res.status(404).json(
                 {
                     success: true,
@@ -182,7 +185,7 @@ sessionController.deleteSession = async (req,res) => {
             {
                 success: true,
                 message: `La sesión "${deleteSession.title}" ha sido eliminada de todo registro.`,
-                data: deleteScene
+                data: deleteSession
             }
         );  
 
