@@ -110,6 +110,7 @@ sessionController.updateSession = async (req,res) => {
             ); 
         };
 
+        
         const updateSession = await Session.update(
             {
                 title: title,
@@ -121,23 +122,31 @@ sessionController.updateSession = async (req,res) => {
             }
         );
 
-        scenesAtSession.map((scene) => {
-            console.log(scene);
+        if ( scenesAtSession?.length === 0 ) {
+            const scenesSession = await Scene.update(
+                { 
+                    session_id: null,
+                    session_index: null
+                },
+                {
+                    where: {session_id: id}
+                }
+            );
             
-        });
-
-        // for (let i = 0; i < scenesAtSession.length; i++) {
-            
-        //     const scenesSession = await Scene.update(
-        //         { 
-        //             session_id: id,
-        //             session_index: i
-        //         },
-        //         {
-        //             where: {id: scenesAtSession[i].id}
-        //         }
-        //     );
-        // };        
+        } else if( scenesAtSession?.length > 0) {            
+            for (let i = 0; i < scenesAtSession.length; i++) {
+                
+                const scenesSession = await Scene.update(
+                    { 
+                        session_id: id,
+                        session_index: i
+                    },
+                    {
+                        where: {id: scenesAtSession[i].id}
+                    },
+                );
+            }; 
+        };
 
         return res.status(200).json(
             {
