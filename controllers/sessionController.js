@@ -138,7 +138,7 @@ sessionController.updateSession = async (req,res) => {
         );
 
         if ( scenesAtSession?.length === 0 ) {
-            const scenesSession = await Scene.update(
+            await Scene.update(
                 { 
                     session_id: null,
                     session_index: null
@@ -149,9 +149,18 @@ sessionController.updateSession = async (req,res) => {
             );
             
         } else if( scenesAtSession?.length > 0) {            
+            await Scene.update(
+                { 
+                    session_id: null,
+                    session_index: null
+                },
+                {
+                    where: {session_id: id}
+                }
+            );
+
             for (let i = 0; i < scenesAtSession.length; i++) {
-                
-                const scenesSession = await Scene.update(
+                await Scene.update(
                     { 
                         session_id: id,
                         session_index: i
