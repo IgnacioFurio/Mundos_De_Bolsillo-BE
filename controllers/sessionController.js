@@ -1,5 +1,5 @@
 const { where } = require('sequelize');
-const { Session, Scene, CharacterScene, Character } = require('../models');
+const { Session, Scene, CharacterScene, Character, Location } = require('../models');
 
 const sessionController = {};
 
@@ -75,6 +75,10 @@ sessionController.getAllSessionsByGameId = async (req,res) => {
                                     },
                                 ]
                             },
+                            {
+                                model: Location,
+                                as: "location"
+                            }
                         ]
                     }
                 ],
