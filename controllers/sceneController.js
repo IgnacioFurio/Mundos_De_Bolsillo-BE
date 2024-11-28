@@ -100,6 +100,58 @@ sceneController.getAllScenesByGameId = async (req,res) => {
     }
 };
 
+sceneController.getNonVisitedScenesByGameId = async (req,res) => {
+    try {
+        const { game_id } = req.body;
+        
+        const allScenes = await Scene.findAll(
+            {
+                where: {game_id: game_id, session_id: null},
+                include: [
+                    {
+                        model: Location,
+                        as: "location"
+                    },
+                    {
+                        model: CharacterScene,
+                        include: [
+                            {
+                                model: Character,
+                                as: "characterId"
+                            }
+                        ]
+                    },
+                ]
+            }
+        );
+        
+        if (allScenes.lenght === 0) {
+            return res.status(404).json(
+                { 
+                    success: false,
+                    message: 'Hemos registrado todo el archivo y no hemos podido encontrar escenas.',
+                }
+            );
+        }
+
+        return res.status(201).json(
+            { 
+                success: true,
+                message: 'Aquí tienes todas las escenas creadas para la partida.',
+                data: allScenes
+            }
+        );
+    } catch (error) {
+        return res.status(501).json(
+            { 
+                success: false,
+                message: 'Algún mago ha saboteado tú búsqueda, estamos trabajando en solucionarlo.',
+                error: error.message
+            }
+        );  
+    }
+};
+
 sceneController.updateScene = async (req,res) => {
     try {
         const { id, title, description, location_id, game_id, characters_id } = req.body

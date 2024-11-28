@@ -15,6 +15,7 @@ module.exports = {
           location_id: 8, 
           game_id: 1,
           session_id: null,
+          session_index: null,
           createdAt: "2023-02-22 00:00:00", 
           updatedAt: "2023-02-22 00:00:00" 
         },
@@ -24,6 +25,7 @@ module.exports = {
           location_id: 8, 
           game_id: 1,
           session_id: null,
+          session_index: null,
           createdAt: "2023-02-22 00:00:00", 
           updatedAt: "2023-02-22 00:00:00" 
         },
@@ -33,6 +35,7 @@ module.exports = {
           location_id: 2, 
           game_id: 2,
           session_id: null,
+          session_index: null,
           createdAt: "2023-02-22 00:00:00", 
           updatedAt: "2023-02-22 00:00:00" 
         },
@@ -42,6 +45,7 @@ module.exports = {
           location_id: 4, 
           game_id: 3,
           session_id: null,
+          session_index: null,
           createdAt: "2023-02-22 00:00:00", 
           updatedAt: "2023-02-22 00:00:00" 
         },

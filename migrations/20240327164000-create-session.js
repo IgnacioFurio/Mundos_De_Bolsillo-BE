@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Scenes', {
+    await queryInterface.createTable('Sessions', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -13,27 +13,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       description: {
-        type: Sequelize.TEXT
-      },
-      session_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "Sessions",
-          key:"id",
-          allowNull: false
-        }
-      },
-      session_index: {
-        allowNull: true,
-        type: Sequelize.INTEGER
-      },
-      location_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "Locations",
-          key:"id",
-          allowNull: false
-        }
+        type: Sequelize.STRING
       },
       game_id: {
         type: Sequelize.INTEGER,
@@ -54,6 +34,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Scenes');
+    await queryInterface.dropTable('Sessions');
   }
 };
