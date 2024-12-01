@@ -9,6 +9,7 @@ module.exports = {
      * Example:
      */
       await queryInterface.bulkInsert('Scenes', [
+        /* VALL */
         { 
           title: "Disturbios en el mercado", 
           description: "Al llegar a Mantol Derith nuestros personajes se encuentran con que el caos a invadido la ciudad.", 
@@ -29,6 +30,17 @@ module.exports = {
           createdAt: "2023-02-22 00:00:00", 
           updatedAt: "2023-02-22 00:00:00" 
         },
+        /* BAROVIA */
+        { 
+          title: "Devolviendo los huesos", 
+          description: "Una vez recuperados los huesos de San Andral es momento de devolverlos a la Iglesia de San Andral en el pueblo de Vallaki para que restauren la protección que ofrece al pueblo entero el conjunto del templo más los restos del mártir",
+          location_id: 9, /* IGLESIA DE SAN ANDRAL */
+          game_id: 2,
+          session_id: null,
+          session_index: null,
+          createdAt: "2023-02-22 00:00:00", 
+          updatedAt: "2023-02-22 00:00:00" 
+        },
         { 
           title: "Cena con Strahd", 
           description: "Después de una pequeña conversación dónde contará la historia del Castillo de Ravenloft el conde se levantará del órgano y se sentará en la mesa sin probar un solo bocado. \n Strahd está predispuesto a hablar del presente de estas tierras, de como los vampiros más jóvenes están perdiendo el control sobre sus ansias de sangre y el trata de proteger a todas las almas que quedan vivas luchando contra estos vampiros asalvajados.\n Tras esto ofrecerá a los personajes protección en su castillo a cambio de limpiar las tierras de Barovia de traidores (incluyendo a aquellas personas que están pensando en iniciar una revolución)",
@@ -39,6 +51,7 @@ module.exports = {
           createdAt: "2023-02-22 00:00:00", 
           updatedAt: "2023-02-22 00:00:00" 
         },
+        /* DRAGON HEIST */
         { 
           title: "Ayuda de las Manos Inspiradas", 
           description: "Tras el reciente asalto en el callejón Beggend ha caído y no tiene constantes vitales, es el momento de pedir ayuda a viejos aliados.", 
