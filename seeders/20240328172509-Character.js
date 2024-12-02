@@ -353,6 +353,284 @@ module.exports = {
         createdAt: "2023-02-22 00:00:00",
         updatedAt: "2023-02-22 00:00:00"
       },
+      //Viejo Muelehuesos
+      {
+        name: "Morgantha",
+        description: "Una anciana bruja que lidera la operación en el Molino Muelehuesos. Aparentemente amable, pero en realidad fabrica pasteles mágicos a partir de las almas de los niños.",
+        world_id: 2,
+        from_location_id: 24,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      {
+        name: "Bella Sunbane",
+        description: "Una de las hijas de Morgantha, astuta y servicial. Participa activamente en las operaciones oscuras del molino.",
+        world_id: 2,
+        from_location_id: 24,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      {
+        name: "Offalia Wormwiggle",
+        description: "La otra hija de Morgantha, más introvertida pero igual de peligrosa. Su especialidad son los hechizos de manipulación.",
+        world_id: 2,
+        from_location_id: 24,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      {
+        name: "Almas atrapadas",
+        description: "Un grupo de espíritus infantiles cuyas almas han sido utilizadas para crear los pasteles mágicos. Aunque no interactúan directamente, su presencia es palpable en el molino.",
+        world_id: 2,
+        from_location_id: 24,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      //Argynvoltholt
+      {
+        name: "Vladimir Horngaard",
+        description: "El líder de los Caballeros de la Orden del Dragón de Plata. Ahora, un caballero de la muerte lleno de rencor contra Strahd y el mundo.",
+        world_id: 2,
+        from_location_id: 26,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      {
+        name: "Sir Godfrey Gwilym",
+        description: "El amante y teniente de Vladimir. Aunque también es un caballero de la muerte, mantiene un poco de humanidad y busca liberar a Vladimir de su odio.",
+        world_id: 2,
+        from_location_id: 26,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      {
+        name: "Argynvost",
+        description: "El espíritu del dragón plateado que da nombre al castillo. Lucha por recuperar su honor y proteger Barovia, incluso después de la muerte.",
+        world_id: 2,
+        from_location_id: 26,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      {
+        name: "Espectros de la Orden",
+        description: "Fantasmas de los antiguos Caballeros de la Orden del Dragón de Plata, atrapados en el castillo. Algunos ayudan a los aventureros, mientras que otros son hostiles.",
+        world_id: 2,
+        from_location_id: 26,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      {
+        name: "Fantasmas en pena",
+        description: "Espíritus atormentados que deambulan por Argynvostholt, encarnaciones del dolor y la traición sufrida por la Orden.",
+        world_id: 2,
+        from_location_id: 26,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      //Krezk
+      {
+        name: "Dimitri Krezkov",
+        description: "El burgomaestre de Krezk, un hombre práctico y justo que lidera la aldea con dedicación y prudencia.",
+        world_id: 2,
+        from_location_id: 28,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      {
+        name: "Anna Krezkova",
+        description: "Esposa de Dimitri Krezkov, una mujer amable que desempeña un papel importante en la vida comunitaria de Krezk.",
+        world_id: 2,
+        from_location_id: 28,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      {
+        name: "Ilya Krezkov",
+        description: "El hijo de Dimitri y Anna, fallecido prematuramente. Su muerte tuvo un impacto profundo en la familia Krezkov.",
+        world_id: 2,
+        from_location_id: 28,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      //Ruinas de Beren
+      {
+        name: "Baba Lysaga",
+        description: "Una poderosa bruja que habita en una cabaña mágica en las ruinas de Berez. Está obsesionada con proteger a Strahd, a quien considera su hijo.",
+        world_id: 2,
+        from_location_id: 30,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      {
+        name: "El fantasma de Marina",
+        description: "El espíritu de una joven que fue sacrificada por su propio pueblo para intentar detener los avances de Strahd. Su alma vaga por las ruinas, atrapada por el dolor.",
+        world_id: 2,
+        from_location_id: 30,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      {
+        name: "El fantasma del burgomaestre Lazlo Ulrich",
+        description: "El espíritu del antiguo líder de Berez, que lleva el peso de la culpa por haber sacrificado a Marina. Ahora vaga por las ruinas, atormentado por su decisión.",
+        world_id: 2,
+        from_location_id: 30,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      {
+        name: "Muriel Vinshaw",
+        description: "Una wereraven de la familia Martikov, que vigila las actividades de Baba Lysaga en Berez. Leal a la causa de la resistencia contra Strahd.",
+        world_id: 2,
+        from_location_id: 30,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      //El MAgo de las Viñas
+      {
+        name: "Davian Martikov",
+        description: "El patriarca de la familia Martikov y líder de los wereravens. Amargado por los conflictos con sus hijos, pero dedicado a la protección del viñedo.",
+        world_id: 2,
+        from_location_id: 32,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      {
+        name: "Eliza Martikov",
+        description: "La hija de Davian Martikov, quien supervisa la producción de vino en el viñedo. Es práctica y valiente, pero guarda resentimiento por la actitud de su padre.",
+        world_id: 2,
+        from_location_id: 32,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      {
+        name: "Stefania Martikov",
+        description: "La esposa de Davian, que a menudo actúa como mediadora entre su esposo y sus hijos. A pesar de ser amable, también es firme en sus decisiones.",
+        world_id: 2,
+        from_location_id: 32,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      {
+        name: "Kellen Martikov",
+        description: "Uno de los hijos de Davian, quien se ha distanciado de su familia y se encuentra en desacuerdo con la forma en que su padre maneja las cosas.",
+        world_id: 2,
+        from_location_id: 32,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      {
+        name: "Vidal Martikov",
+        description: "Otro hijo de Davian, que se siente atrapado entre las expectativas de su padre y las complicaciones con los viñedos.",
+        world_id: 2,
+        from_location_id: 32,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      //Templo de Ámbar
+      {
+        name: "Svetlana",
+        description: "La sacerdotisa del Templo de Ámbar. Es una mujer amable y de buena voluntad que protege el templo y su reliquia sagrada. Se encuentra en una constante lucha interna debido a la influencia de Strahd sobre el lugar.",
+        world_id: 2,
+        from_location_id: 33,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      {
+        name: "La criatura ámbar",
+        description: "Una extraña y antigua criatura que se encuentra atrapada dentro del Templo de Ámbar. Es un ser primordial que emana una energía maléfica y está vinculada a la corrupción del templo.",
+        world_id: 2,
+        from_location_id: 33,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      {
+        name: "Cira",
+        description: "Una mujer misteriosa que habita en el templo y se cree que tiene conocimientos oscuros sobre las artes arcanas. Algunos dicen que es una antigua sirviente de Strahd que busca redención.",
+        world_id: 2,
+        from_location_id: 33,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      //Colina de Yester
+      {
+        name: "Beren",
+        description: "Un líder de los hombres lobo de la región, quien comanda una banda de hombres lobo en la Colina de Yester. Es leal a Strahd y actúa como su servidor en la zona.",
+        world_id: 2,
+        from_location_id: 34,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      {
+        name: "Yesterhill",
+        description: "Un anciano druida que actúa como el líder de los seguidores de Strahd en la Colina de Yester. Es un hechicero poderoso con conocimientos de las fuerzas oscuras que luchan para retener el control sobre la región.",
+        world_id: 2,
+        from_location_id: 34,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      {
+        name: "Anya",
+        description: "Una druida joven que sigue los caminos oscuros, influenciada por la presencia de Yesterhill. Está dividida entre su devoción por la naturaleza y su lealtad a los druidas malignos que siguen las órdenes de Strahd.",
+        world_id: 2,
+        from_location_id: 34,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      //Guarida de Licántropos
+      {
+        name: "Kiril Stoyanovich",
+        description: "El líder de la manada de licántropos que habita en la Guarida de Licántropos. Es un hombre lobo feroz y decidido, que lidera a su banda con mano de hierro y está completamente leal a Strahd.",
+        world_id: 2,
+        from_location_id: 35,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      {
+        name: "Vladimir Horngaard",
+        description: "Un antiguo caballero de Barovia que se transformó en licántropo bajo la maldición de Strahd. Ha perdido gran parte de su humanidad, pero sigue siendo un líder respetado dentro de la manada.",
+        world_id: 2,
+        from_location_id: 35,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      {
+        name: "Tasha",
+        description: "Una joven licántropa que ha sido acogida por la manada. Aunque leal a Kiril y la causa de los licántropos, lucha con su naturaleza bestial y sus recuerdos humanos.",
+        world_id: 2,
+        from_location_id: 35,
+        last_location_known_id: null,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
     ], {});
   },
 
