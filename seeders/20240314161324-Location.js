@@ -21,7 +21,7 @@ module.exports = {
       {name: "Gauntlgrym", world_id: 1, description: "Gauntlgrym es una ciudad tallada en la roca viva, con salones y pasadizos lo suficientemente grandes como para que incluso los dragones más grandes puedan andar por ellos. Hay cientos de niveles, serpenteantes escaleras, ascensores funcionando, y un sistema de vagonetas mineras que entran y salen del centro de conexión principal que es el tabernáculo de Hierro", type: "Ciudad", government: "Monarquía", population: "200, casi todo enanos.", defenses: "Guardias veteranos enanos", commerce: "Inactivo de momento.", createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"},
       //BAROVIA
       {
-        name: "Camino Antiguo de Svalich", 
+        name: "A. Camino Antiguo de Svalich", 
         world_id: 2, 
         description: "Un camino fangoso en cuyos alrededores están invadidos de charcos de agua negra como espejos oscuros. A ambos lados de la carretera se alzan árboles gigantescos cuyas ramas arañan la niebla.", 
         type: "Camino", 
@@ -33,7 +33,7 @@ module.exports = {
         updatedAt: "2023-02-22 00:00:00"
       },
       {
-        name: "Puertas de Barovia", 
+        name: "B. Puertas de Barovia", 
         world_id: 2, 
         description: "La niebla se desliza como un manto espectral desde el bosque, devorando el camino que se pierde en la lejanía. Más adelante, entre los árboles oscuros y opresivos que flanquean el sendero, emergen imponentes contrafuertes de piedra, sus siluetas grises quedan difuminadas por el velo de la niebla. Unas enormes puertas de hierro cuelgan pesadamente de los muros, el rocío brilla en sus barrotes corroídos como lágrimas frías y persistentes. A cada lado de la entrada, dos estatuas decapitadas de guardianes armados vigilan en un silencio eterno. Sus cabezas caídas reposan, ahora olvidadas, entre las malezas que invaden el suelo. Solo el mutismo inquietante de este umbral parece darte la bienvenida.", 
         type: "Muro",
@@ -45,7 +45,7 @@ module.exports = {
         updatedAt: "2023-02-22 00:00:00"
       },
       {
-        name: "Bosque de Svalich", 
+        name: "C. Bosque de Svalich", 
         world_id: 2, 
         description: "Árboles imponentes cuyas copas se pierden en una densa niebla gris bloquean todo excepto una tenue y mortecina luz. Los troncos están antinaturalmente cercanos entre sí, como si el bosque estuviera estrangulado por su propia densidad. En el aire reina el silencio sepulcral de una tumba olvidada, aunque el ambiente vibra con la opresiva sensación de un grito atrapado, nunca pronunciado.", 
         type: "Bosque",
@@ -57,7 +57,7 @@ module.exports = {
         updatedAt: "2023-02-22 00:00:00"
       },
       {
-        name: "Río Ivlis", 
+        name: "D. Río Ivlis", 
         world_id: 2, 
         description: "Este río fluye tan cristalino como un cielo azul en pleno invierno, serpenteando con serenidad a través del valle. Su cauce se extiende unos 50 pies de ancho, y sus aguas tienen una profundidad variable, oscilando entre los 5 y 10 pies. A pesar de su calma aparente, hay algo en la corriente que evoca tanto la quietud de la naturaleza como su insondable misterio.", 
         type: "Muro",
@@ -69,7 +69,7 @@ module.exports = {
         updatedAt: "2023-02-22 00:00:00"
       },
       {
-        name: "La Villa de Barovia", 
+        name: "E. La Villa de Barovia", 
         world_id: 2, 
         description: "La villa de Barovia es el lugar más triste en estas tierras, sus residentes tan temerosos de Strahd que rara vez se aventuran fuera de sus hogares. La villa se halla a la sombra del Castillo Ravenloft, enterrada en la niebla, pero sin embargo todavía incapaz de esconderse de la vista del vampiro.", 
         type: "Villa", 
@@ -81,7 +81,7 @@ module.exports = {
         updatedAt: "2023-02-22 00:00:00"
       },
       {
-        name: "Cruce del Río Ivlis", 
+        name: "F. Cruce del Río Ivlis", 
         world_id: 2, 
         description: "En este punto, el camino desgastado por el tiempo se bifurca, y un letrero, frente al cadalso, señala tres direcciones: al este, la Villa de Barovia; al noroeste, el estanque Tser; y al suroeste, Ravenloft y Vallaki. El sendero hacia el noroeste se inclina hacia abajo y se pierde entre los árboles, mientras que el del suroeste asciende con una pendiente pronunciada. Justo enfrente del cadalso, un muro bajo y en ruinas, roto en algunos tramos, rodea parcialmente un pequeño cementerio, cuyas tumbas están envueltas en una niebla densa y persistente, como si intentaran ocultar sus secretos a ojos indiscretos.", 
         type: "Cruce de caminos", 
@@ -93,7 +93,7 @@ module.exports = {
         updatedAt: "2023-02-22 00:00:00"
       },
       {
-        name: "Campamento del Estanque Tser", 
+        name: "G. Campamento del Estanque Tser", 
         world_id: 2, 
         description: "El camino se desvanece poco a poco, transformándose en un sendero retorcido y embarrado que serpentea entre los árboles. Profundas rodadas en la tierra son testigos mudos de los constantes viajes de carretas. De repente, el dosel de ramas y niebla se abre, revelando un cielo cargado de nubes negras que se agitan como un mar embravecido. Frente a vosotros se extiende un claro junto a un río, que se ensancha para formar un pequeño lago de cientos de pies de ancho. Cinco coloridas tiendas redondas, cada una de unas diez pies de diámetro, están dispuestas alrededor de un anillo de carromatos de techos abovedados. Más cerca de la orilla, una tienda mucho más grande, algo inclinada por el peso del tiempo, emite una cálida luz desde su interior. Cerca de ella, ocho caballos sin bridas se inclinan, tranquilos, para beber del río. El aire se llena con las melancólicas notas de un acordeón, chocando y mezclándose con las voces alegres de varias figuras vestidas con ropas vibrantes que cantan alrededor de una hoguera. Desde el campamento, un estrecho sendero sigue su curso hacia el norte, serpenteando entre el río y el borde sombrío del bosque.", 
         type: "Asentamiento Vistani", 
@@ -105,7 +105,7 @@ module.exports = {
         updatedAt: "2023-02-22 00:00:00"
       },
       {
-        name: "Cascadas Tser", 
+        name: "H. Cascadas Tser", 
         world_id: 2, 
         description: "Seguís el camino de tierra que serpentea, aferrándose con precaria tenacidad al flanco de la montaña, hasta que termina ante un puente arqueado de piedra oscurecida por siglos de moho. Este estructura, cubierta de cicatrices del tiempo, se alza sobre un abismo profundo, donde el eco del agua y el viento parecen susurrar secretos olvidados. En las esquinas del puente, gárgolas envueltas en un manto de musgo negro os observan, sus rostros endurecidos y corroídos por los elementos, como si alguna emoción perdida se hubiera petrificado en ellas. Desde el lado montañoso, una cascada cae en un rugido estruendoso, desvaneciéndose en la bruma antes de alcanzar una piscina escondida en la profundidad, a casi mil pies por debajo. Desde allí, un río nace, zigzagueando entre los pinos ahogados en niebla, perdiéndose en la inmensidad del valle, donde la luz apenas se atreve a entrar.", 
         type: "Laguna salvaje", 
@@ -117,7 +117,7 @@ module.exports = {
         updatedAt: "2023-02-22 00:00:00"
       },
       {
-        name: "Carruaje Negro", 
+        name: "I. Carruaje Negro", 
         world_id: 2, 
         description: "Detenida en el camino, apuntando hacia el este, se encuentra una gran carroza negra tirada por dos caballos del mismo color. Los animales resoplan, exhalando nubes de vapor que se disuelven en el aire helado de la montaña. De repente, la puerta lateral de la carroza se abre, deslizándose en un movimiento tan silencioso que parece casi antinatural.", 
         type: "Carruaje", 
@@ -129,7 +129,7 @@ module.exports = {
         updatedAt: "2023-02-22 00:00:00"
       },
       {
-        name: "Puertas de Ravenloft", 
+        name: "J. Puertas de Ravenloft", 
         world_id: 2, 
         description: "Tras serpentear entre el bosque y los picos escarpados de la montaña, el camino gira bruscamente hacia el este, y ante vosotros se alza la imponente y sobrecogedora presencia del castillo Ravenloft. La carroza se detiene de golpe frente a dos torres de piedra gemelas, sus cúspides rotas y desgastadas tras años de abandono y exposición a los elementos. Más allá de estas torres, un precipicio de cincuenta pies de ancho, lleno de niebla, se sumerge en profundidades desconocidas. Un puente levadizo, bajado y formado por vigas de madera vieja y reforzada, se extiende precariamente sobre el abismo, conectando vuestra posición con el arco de entrada al patio. Las cadenas del puente rechinan al viento, el hierro corroído por el óxido parece protestar bajo su propio peso. Desde lo alto de los muros, gárgolas de piedra os observan con ojos vacíos, sus rostros deformados por sonrisas macabras que parecen burlarse. Sobre el túnel de entrada, un portón de madera podrida, cubierto de musgo y verdín, cuelga ominosamente. Más allá, las puertas principales de Ravenloft están abiertas de par en par. Desde su interior emana una cálida y rica luz que inunda el patio, creando un contraste inquietante con la penumbra circundante. Antorchas parpadean tristemente en las abrazaderas a ambos lados de las puertas abiertas, sus llamas luchando contra el viento como si compartieran su melancolía.",
         type: "Fortaleza", 
@@ -141,7 +141,7 @@ module.exports = {
         updatedAt: "2023-02-22 00:00:00"
       },
       {
-        name: "Castillo de Ravenloft", 
+        name: "K. Castillo de Ravenloft", 
         world_id: 2, 
         description: "",
         type: "Castillo", 
@@ -153,7 +153,7 @@ module.exports = {
         updatedAt: "2023-02-22 00:00:00"
       },
       {
-        name: "Lago Zarovich", 
+        name: "L. Lago Zarovich", 
         world_id: 2, 
         description: "Al pie de una montaña, enclavado en un bosque neblinoso, hay un gran lago. El agua está completamente quieta y oscura, reflejando las nubes negras que hay en lo alto como un espejo monstruoso.",
         type: "Lago", 
@@ -165,7 +165,7 @@ module.exports = {
         updatedAt: "2023-02-22 00:00:00"
       },
       {
-        name: "Base del monte Baratok", 
+        name: "M. Base del monte Baratok", 
         world_id: 2, 
         description: "Al norte del lago de montaña, los árboles comienzan a ascender de forma constante por las laderas del monte Baratok, cuya presencia monolítica resulta opresiva a esta distancia. El terreno aquí es rocoso, irregular y agotador de recorrer.",
         type: "Montaña, Bosque y Río", 
@@ -189,7 +189,7 @@ module.exports = {
         updatedAt: "2023-02-22 00:00:00"
       },
       {
-        name: "Ciudad de Vallaki", 
+        name: "N. Ciudad de Vallaki", 
         world_id: 2, 
         description: "El viejo camino de Svalich serpentea hacia un valle custodiado por montañas oscuras y amenazantes, que se alzan al norte y al sur como centinelas sombríos. El bosque retrocede poco a poco, dejando al descubierto una aldea montañesa de aspecto lúgubre, rodeada por una empalizada de madera. Una espesa niebla se amontona contra las paredes de la barrera, como si buscara un resquicio para colarse, ansiando atrapar al pueblo desprevenido en su sueño. El camino de tierra culmina frente a un par de robustas puertas de hierro, tras las cuales se perfilan dos figuras envueltas en sombras. A ambos lados del sendero, clavadas en el suelo como grotescas advertencias, se alzan media docena de picas, cada una coronada con la cabeza cercenada de un lobo. La escena está cargada de un mensaje inconfundible: la entrada a este lugar no está destinada a los débiles ni a los desprevenidos.",
         type: "Ciudad pequeña", 
@@ -201,7 +201,7 @@ module.exports = {
         updatedAt: "2023-02-22 00:00:00"
       },
       {
-        name: "Viejo Muelehuesos", 
+        name: "O. Viejo Muelehuesos", 
         world_id: 2, 
         description: "El viejo camino de Svalich deja atrás las sinuosas curvas de las montañas Balinok, transformándose en un sendero perezoso que se abraza al costado de la montaña mientras desciende hacia un valle envuelto en niebla. En el corazón de ese valle, podéis distinguir una ciudad amurallada cerca de las orillas de un gran lago montañoso, cuyas aguas oscuras permanecen inmóviles, como si ocultaran secretos profundos. Una bifurcación en el camino se extiende hacia el oeste, conduciendo a un promontorio donde se alza un molino de viento de piedra en ruinas, con sus aspas de madera deformadas y despojadas de toda utilidad. Al acercaros al molino, un hedor extraño y perturbador os golpea como una ola invisible. La brisa trae consigo un aroma acre y dulzón, como de harina rancia mezclada con algo profundamente errado: un toque de carne vieja y humedad estancada, que se infiltra en el aire frío del valle. Cuando os aproximáis aún más, el olor se intensifica. Ahora distinguís un matiz metálico, como el hierro oxidado, entremezclado con el denso tufo de grasa quemada. Algo más profundo se filtra desde las grietas de la puerta y las ventanas cubiertas de suciedad: un olor sutil pero inconfundible de hueso calcinado, que se adhiere a la garganta y al pensamiento. Es el tipo de aroma que no pertenece aquí, un eco de actos que nunca deberían haber ocurrido. El cuervo sobre la viga grazna de nuevo, esta vez con un tono más urgente, como si también percibiera lo que acecha dentro del molino. La puerta, desgastada y endeble, parece susurrar su propia advertencia, dejando escapar una corriente apenas perceptible de ese aire viciado que hace que cada respiración sea un desafío para vuestra valentía.",
         type: "Edificio desgastado", 
@@ -213,7 +213,7 @@ module.exports = {
         updatedAt: "2023-02-22 00:00:00"
       },
       {
-        name: "Cruce del Río Luna", 
+        name: "P Cruce del Río Luna", 
         world_id: 2, 
         description: "El camino se encuentra con una encrucijada en forma de X, donde las ramas se extienden en direcciones opuestas, como brazos esqueléticos invitando al extravío. La mitad inferior de un poste de señales roto sobresale del suelo en un ángulo extraño, mientras que la parte superior yace en las malas hierbas cercanas, sus letras apenas visibles bajo una capa de musgo y suciedad. La niebla se agarra al suelo como un manto inquietante, envolviendo las sombras de los árboles cercanos, cuyas ramas desnudas se arquean hacia el camino. El silencio pesa, roto solo por un lejano crujido, mientras el aire parece vibrar con una sensación de amenaza no revelada.",
         type: "Camino", 
@@ -225,7 +225,7 @@ module.exports = {
         updatedAt: "2023-02-22 00:00:00"
       },
       {
-        name: "Argynvostholt", 
+        name: "Q. Argynvostholt", 
         world_id: 2, 
         description: "Muy por encima del valle del río, un promontorio solitario se alza, coronado por una mansión sepulcral. Sus torretas, rematadas con conos de cuento de hadas, y sus muros adornados con almenas esculpidas parecen un eco de grandeza perdida. Parte de la estructura ha colapsado, dejando un techo roto y paredes desgarradas, mientras que una torre octagonal oscura domina la silueta, como un vigía que contempla la muerte misma. Un trueno distante ruge desde la niebla, seguido rápidamente por el aullido de lobos en el bosque bajo la ladera. Sin embargo, la casa permanece inmóvil y silenciosa, como los restos fosilizados de una criatura muerta hace mucho, aplastada contra la montaña por el peso del tiempo.",
         type: "Fortaleza", 
@@ -237,7 +237,7 @@ module.exports = {
         updatedAt: "2023-02-22 00:00:00"
       },
       {
-        name: "Cruce del Río Cuervo", 
+        name: "R. Cruce del Río Cuervo", 
         world_id: 2, 
         description: "A lo largo del camino, veis un cartel desgastado por el tiempo, cuyas tres flechas apuntan a las tres bifurcaciones del sendero. La flecha que apunta al norte muestra la palabra Krezk, y entre los árboles podéis distinguir un puente de piedra arqueado que cruza un río oscuro. La flecha que apunta al este señala Vallaki, y el camino sube suavemente en esa dirección, como si invitara a perderse en las colinas lejanas. La flecha que apunta al suroeste muestra El Hechicero de los Vinos, y el camino desciende en esa dirección, ocultándose lentamente bajo una capa de niebla espesa.",
         type: "Cruce de caminos", 
@@ -249,7 +249,7 @@ module.exports = {
         updatedAt: "2023-02-22 00:00:00"
       },
       {
-        name: "Asentamiento de Krezk", 
+        name: "S. Asentamiento de Krezk", 
         world_id: 2, 
         description: "El pueblo envuelto en niebla no es más que un pequeño conjunto de humildes cabañas de madera, alineadas a lo largo de caminos de tierra que serpentean entre grupos de pinos cubiertos de nieve. Los árboles son tantos que dan la impresión de formar un bosque entero. Al noreste, los acantilados grises se elevan abruptamente, y desde aquí se puede ver con claridad el sinuoso camino que asciende hacia la abadía.",
         type: "Asentamiento pequeño", 
@@ -261,7 +261,7 @@ module.exports = {
         updatedAt: "2023-02-22 00:00:00"
       },
       {
-        name: "Paso de Tsolenka", 
+        name: "T. Paso de Tsolenka", 
         world_id: 2, 
         description: "La cornisa rocosa por la que se aferra la carretera de montaña se angosta con cada paso, como si intentara arrastraros hacia el abismo. A vuestra izquierda, helados acantilados se alzan de forma abrupta hacia el cielo, donde oscuras nubes arremolinadas parecen devorar la luz. A vuestra derecha, el suelo se desvanece en un océano de brumas, tan profundo y denso que parece ocultar algo más que vacío. Frente a vosotros, a través del aullido del viento y los cuchillazos de la nieve, se alza un imponente muro de piedra negra, coronado por afiladas púas y grotescas estatuas de buitres demoníacos con cuernos retorcidos. En el centro del muro, un rastrillo de hierro cerrado parece desafiar vuestro avance, y más allá de él, una cortina de llamas verdes crepita de forma sobrenatural, iluminando la negrura con un resplandor antinatural. Al otro lado de esta barrera oscura, encaramada peligrosamente al borde de la montaña, se alza una torre de guardia de piedra blanca. Su forma destaca por su contraste con el muro sombrío, y en su cúspide descansan doradas estatuas de imponentes guerreros, como centinelas inmortales que observan en silencio vuestro progreso.",
         type: "Puente", 
@@ -273,7 +273,7 @@ module.exports = {
         updatedAt: "2023-02-22 00:00:00"
       },
       {
-        name: "Ruinas de Berez", 
+        name: "U. Ruinas de Berez", 
         world_id: 2, 
         description: "El sendero sigue al río durante varias millas, pero pronto la tierra firme da paso a un paisaje cada vez más inhóspito. Los prados desaparecen, reemplazados por cenagales donde el sendero se disuelve en un suelo esponjoso y traicionero, salpicado de altos juncos y pozas de agua estancada que emiten un hedor acre y rancio. Una espesa capa de niebla se cierne sobre el terreno, sofocando cualquier visibilidad y envolviendo todo en un silencio ominoso. Dispersas por la ciénaga, unas pocas cabañas de campesinos se alzan como sombras deformes. Sus muros están cubiertos de moho negro, y casi todos sus tejados se han derrumbado, dejando a estas decrépitas estructuras hundidas en el fango, como si hubieran aceptado su destino hace mucho tiempo. Las viviendas parecen agazaparse en la tierra, derrotadas por el peso de la humedad y el tiempo. Alrededor, enjambres de moscas negras zumban incesantemente, ávidas de sangre, su sonido un recordatorio de la decadencia que impregna el lugar. En la otra orilla del río, donde la niebla se disipa parcialmente, una luz solitaria parpadea en el centro de un círculo de menhires, su resplandor tenue y misterioso brillando como una esperanza distante o una advertencia velada.", 
         type: "Pueblo Abandonado", 
@@ -285,7 +285,7 @@ module.exports = {
         updatedAt: "2023-02-22 00:00:00"
       },
       {
-        name: "Torre de Van Richten", 
+        name: "V. Torre de Van Richten", 
         world_id: 2, 
         description: "Habéis llegado a un gélido lago de montaña, rodeado de bosques brumosos y acantilados escarpados que parecen vigilar el paisaje con su imponente presencia. Una densa capa de niebla se desliza lentamente sobre las oscuras y tranquilas aguas, engullendo todo con su abrazo silencioso. El sendero llega a su fin en una pasarela cubierta de hierba húmeda que se extiende unos cien metros sobre el lago, conduciendo a una isla pantanosa y plana. En el centro de la isla, una torre de piedra vieja y decrépita se alza como un vestigio olvidado. Sus muros están agrietados, y unos andamios medio derrumbados se aferran precariamente a uno de sus lados, marcados por una profunda fisura que ha desgarrado la estructura. Encima de los contrafuertes que sostienen los muros, unas desgastadas estatuas de grifos, cubiertas de musgo y con sus alas erosionadas por el tiempo, observan en silencio, como centinelas eternos de un pasado que se niega a desaparecer. La escena, envuelta en la penumbra de la niebla, parece congelada en el tiempo, cargada de un aura de abandono y misterio.",
         type: "Fortaleza", 
