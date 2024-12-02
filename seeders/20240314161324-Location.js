@@ -279,7 +279,7 @@ module.exports = {
         type: "Pueblo Abandonado", 
         population: "Baba Lysaga", 
         defenses: "Baba Lysaga", 
-        gobernment: "Baba Lysaga",
+        government: "Baba Lysaga",
         commerce: "Tratos y Favores",
         createdAt: "2023-02-22 00:00:00", 
         updatedAt: "2023-02-22 00:00:00"
