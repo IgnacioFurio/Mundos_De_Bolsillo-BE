@@ -101,23 +101,26 @@ questController.getQuestByCharacterId = async (req,res) => {
 questController.getCharactersByQuestId = async (req,res) => {
     try {
         const { quest_id } = req.body;
-                
-        let getCharactersByQuestId = await Characterquest.findAll({ 
-            where: { quest_id: quest_id },
-            include: [
-                {
-                    model: Character,
-                    as: "character",
-                },
-            ]
-        });
 
+        let quest = [];
+                
+        for (let i = 0; i < quest_id.length; i++) {
+            quest.push(await Characterquest.findAll({ 
+                where: { quest_id: quest_id[i] },
+                include: [
+                    {
+                        model: Character,
+                        as: "character",
+                    },
+                ]
+            }));
+        };
         
         return res.status(201).json(
             { 
                 success: true,
                 message: 'Aquí están las misiones.',
-                data: getCharactersByQuestId
+                data: quest
             }
         );
     } catch (error) {
