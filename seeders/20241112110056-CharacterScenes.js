@@ -16,11 +16,11 @@ module.exports = {
         { scene_id: 3, character_id: 4, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"  },
         { scene_id: 3, character_id: 5, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"  },
         { scene_id: 3, character_id: 6, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"  },
-        { scene_id: 4, character_id: 7, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"  },
-        { scene_id: 4, character_id: 8, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"  },
-        { scene_id: 4, character_id: 9, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"  },
-        { scene_id: 4, character_id: 10, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"  },
-        { scene_id: 4, character_id: 11, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"  },
+        { scene_id: 3, character_id: 78, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"  },
+        { scene_id: 4, character_id: 3, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"  },
+        { scene_id: 4, character_id: 4, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"  },
+        { scene_id: 4, character_id: 5, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"  },
+        { scene_id: 4, character_id: 6, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"  },
       ], {});
   },
 

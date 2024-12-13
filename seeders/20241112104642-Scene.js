@@ -32,9 +32,19 @@ module.exports = {
         },
         /* BAROVIA */
         { 
+          title: "La Manada Ataca", 
+          description: "Si los personajes destruyen la carreta de Ezmerelda, activan la envoltura de relámpagos alrededor de la torre, o provocan su colapso, el estruendo de su obra resuena por todo el valle, llegando hasta Krezk al oeste y hasta Vallaki al este. El retumbar de la destrucción no pasa desapercibido, y pronto una inquietante presencia comienza a aproximarse. Una hora después, el aire se llena de un olor salvaje y a tierra húmeda, y una manada de hombres lobo aparece, atraída por el caos y la carnicería. Sus ojos brillan con hambre y furia, dispuestos a vengar el trastorno que ha perturbado la quietud de Barovia.",
+          location_id: 31,
+          game_id: 2,
+          session_id: null,
+          session_index: null,
+          createdAt: "2023-02-22 00:00:00", 
+          updatedAt: "2023-02-22 00:00:00" 
+        },
+        { 
           title: "Devolviendo los huesos", 
           description: "Una vez recuperados los huesos de San Andral es momento de devolverlos a la Iglesia de San Andral en el pueblo de Vallaki para que restauren la protección que ofrece al pueblo entero el conjunto del templo más los restos del mártir",
-          location_id: 9, /* IGLESIA DE SAN ANDRAL */
+          location_id: 23, /* Ciudad de Vallaki */
           game_id: 2,
           session_id: null,
           session_index: null,

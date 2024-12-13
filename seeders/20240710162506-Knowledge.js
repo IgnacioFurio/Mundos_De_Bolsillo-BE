@@ -153,6 +153,18 @@ module.exports = {
         createdAt: "2023-02-22 00:00:00", 
         updatedAt: "2023-02-22 00:00:00"
       },
+      //EZMERALDA D'AVENIR
+      {
+        title: "El Viaje de Ezmeralda", 
+        description: "Ezmerelda d'avenir regresa a la Torre de Khazan tras enfrentarse cara a cara con Strahd en el oscuro Castillo Ravenloft. Herida y agotada, apenas logra escapar con vida del enfrentamiento, dejando atrás el aire pesado de la muerte que casi la reclama.",
+        veracity: true, 
+        about_character_id: 78, 
+        heard_from_character_id: null, 
+        about_location_id: 31, 
+        heard_on_location_id: null, 
+        createdAt: "2023-02-22 00:00:00", 
+        updatedAt: "2023-02-22 00:00:00"
+      },
     ], {});
   },
 
