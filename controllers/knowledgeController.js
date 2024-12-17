@@ -38,6 +38,36 @@ knowledgeController.getKnowledgeByCharacterId = async(req,res) => {
     try {
         const { about_character_id } = req.body;
 
+        let knowledge = [];
+
+        for (let i = 0; i < about_character_id.length; i++) {
+            knowledge.push(await Knowledge.findAll({
+                where: { about_character_id: about_character_id[i] },
+                include: [
+                    {
+                        model: Character,
+                        as: "aboutCharacter",
+                        attributes: {exclude: ["description", "world_id", "from_location_id", "last_location_known_id"] }
+                    },
+                    {
+                        model: Character,
+                        as: "heardFromCharacter",
+                        attributes: {exclude: ["description", "world_id", "from_location_id", "last_location_known_id"] }
+                    },
+                    {
+                        model: Location,
+                        as: "aboutLocation",
+                        attributes: {exclude: ["description", "world_id", "type", "government", "population", "defenses", "commerce"] }
+                    },
+                    {
+                        model: Location,
+                        as: "heardOnLocation",
+                        attributes: {exclude: ["description", "world_id", "type", "government", "population", "defenses", "commerce"] }
+                    },
+                ]
+            }));
+        };
+
         const allKnowledge = await Knowledge.findAll({
             where: { about_character_id: about_character_id },
             include: [
@@ -80,7 +110,7 @@ knowledgeController.getKnowledgeByCharacterId = async(req,res) => {
             { 
                 success: true,
                 message: `Aquí tienes toda la información que hemos encontrado.`,
-                data: allKnowledge
+                data: knowledge
             }
         );
     } catch (error) {
