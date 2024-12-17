@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Session.init({
     title: DataTypes.STRING,
-    description: DataTypes.STRING,
+    description: DataTypes.TEXT,
     game_id: DataTypes.INTEGER
   }, {
     sequelize,

@@ -633,10 +633,19 @@ module.exports = {
       },
       //Torre de Van Richten
       {
+        name: "Rudolf Van Richten",
+        description: "Un cazador de monstruos legendario, conocido por su lucha incansable contra las criaturas de la oscuridad. Su vida está marcada por tragedia, incluida la pérdida de su hijo a manos de un vampiro.",
+        world_id: 1,
+        from_location_id: null,
+        last_location_known_id: 19,
+        createdAt: "2023-02-22 00:00:00",
+        updatedAt: "2023-02-22 00:00:00"
+      },
+      {
         name: "Ezmeralda d'Avenir",
         description: "una Vistana de mirada aguda y voluntad indomable, es la protegida de Rudolph van Richten, aunque su primer encuentro con el cazador de vampiros estuvo lejos de ser amistoso. En ese encuentro, la desconfianza y la tensión se desbordaron, y la joven Vistana desafió al hombre que, en un futuro, se convertiría en su mentor. Sin embargo, el destino, en su cruel ironía, los unió. Con el tiempo, Ezmerelda se convirtió en su discípula, aprendiendo no solo las artes de la caza de vampiros, sino también las cicatrices invisibles que acompañan a aquellos que se enfrentan a las fuerzas oscuras de Barovia.",
         world_id: 2,
-        from_location_id: 35,
+        from_location_id: 15,
         last_location_known_id: null,
         createdAt: "2023-02-22 00:00:00",
         updatedAt: "2023-02-22 00:00:00"
