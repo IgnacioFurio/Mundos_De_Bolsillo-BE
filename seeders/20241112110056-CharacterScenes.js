@@ -17,6 +17,7 @@ module.exports = {
         { scene_id: 3, character_id: 5, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"  },
         { scene_id: 3, character_id: 6, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"  },
         { scene_id: 3, character_id: 78, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"  },
+        { scene_id: 3, character_id: 75, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"  },
         { scene_id: 4, character_id: 3, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"  },
         { scene_id: 4, character_id: 4, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"  },
         { scene_id: 4, character_id: 5, createdAt: "2023-02-22 00:00:00", updatedAt: "2023-02-22 00:00:00"  },
