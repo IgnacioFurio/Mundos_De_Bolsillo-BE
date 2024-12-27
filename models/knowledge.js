@@ -42,6 +42,15 @@ module.exports = (sequelize, DataTypes) => {
           as: "heardOnLocation"
         }
       );
+
+      Knowledge.belongsToMany(
+        models.Character,
+        {
+          foreignKey: "character_id",
+          as: "characterKnowledge",
+          through: "KnowledgeCharacters"
+        },
+      );
     }
   }
   Knowledge.init({
