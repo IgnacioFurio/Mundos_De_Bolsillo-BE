@@ -3,7 +3,7 @@ const knowledgeCharacterController = require('../controllers/knowledgeCharacterC
 const router = require('express').Router();
 
 router.post('/post', knowledgeCharacterController.createKnowledgeCharacter)
-// router.post('/get-by-character', knowledgeCharacterController.getKnowledgeByCharacterId)
+// router.post('/get-by-character', knowledgeCharacterController.getKnowledgeCharacterId)
 // router.put('/put', knowledgeCharacterController.updateKnowledge)
 // router.delete('/delete', knowledgeCharacterController.deleteKnowledge)
 

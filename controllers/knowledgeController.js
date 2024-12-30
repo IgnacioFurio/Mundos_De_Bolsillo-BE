@@ -34,7 +34,7 @@ knowledgeController.createKnowledge = async (req,res) => {
     }
 };
 
-knowledgeController.getKnowledgeByCharacterId = async(req,res) => {
+knowledgeController.getKnowledgeAboutCharacterId = async(req,res) => {
     try {
         const { about_character_id } = req.body;
 
