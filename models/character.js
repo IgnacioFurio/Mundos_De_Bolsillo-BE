@@ -77,9 +77,9 @@ module.exports = (sequelize, DataTypes) => {
       Character.belongsToMany(
         models.Knowledge,
         {
-          foreignKey: "knowledge_id",
-          as: "knowledge",
-          through: "KnowledgeCharacters"
+          through: "KnowledgeCharacters",
+          foreignKey: "character_id",
+          otherKey: "knowledge_id",
         },
       );
     }

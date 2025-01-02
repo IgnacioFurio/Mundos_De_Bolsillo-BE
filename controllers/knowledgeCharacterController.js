@@ -46,57 +46,80 @@ knowledgeCharacterController.createKnowledgeCharacter = async (req,res) => {
     }
 };
 
-// knowledgeCharacterController.getCharacterByWorldId = async (req,res) => {
-//     try {
-//         const { world_id } = req.body;
-        
-//         let characterByWorldId = [];
-        
-//         for (let i = 0; i < world_id.length; i++) {    
-//             let character = await Character.findAll({ 
-//                 where: { world_id: world_id[i] },
-//                 include: [
-//                     {
-//                         model: World,
-//                         attributes: { exclude: ["id", "description", "createdAt", "updatedAt"]}
-//                     },
-//                     {
-//                         model: Location,
-//                         as: "fromLocation",
-//                     },
-//                     {
-//                         model: Location,
-//                         as: "lastLocationKnown",
-//                     },
-//                     {
-//                         model: Knowledge,
-//                         as: "aboutCharacter"
-//                     }
-//                 ]
-//             });
+knowledgeCharacterController.getKnowledgeKnownByCharacterId = async(req,res) => {
+    try {
+        const { characters_id } = req.body;
 
-//             characterByWorldId.push(character);
-//         };
+        let knowledge = [];
 
-//         characterByWorldId.sort((a,b)=>{a - b});
-        
-//         return res.status(201).json(
-//             { 
-//                 success: true,
-//                 message: 'Aquí están los personajes con los que interactuar en la partida.',
-//                 data: characterByWorldId
-//             }
-//         );
-//     } catch (error) {
-//         return res.status(501).json(
-//             { 
-//                 success: false,
-//                 message: 'Algún mago ha saboteado tú búsqueda, estamos trabajando en solucionarlo.',
-//                 error: error.message
-//             }
-//         );  
-//     }
-// };
+        for (let i = 0; i < characters_id.length; i++) {
+            knowledge.push(await KnowledgeCharacter.findAll({
+                where: { character_id: characters_id[i] },
+                include: [
+                    {
+                        model: Knowledge,
+                        include: [
+                            {
+                                model: Character,
+                                as: "aboutCharacter",
+                                include: [
+                                    {
+                                        model: Location,
+                                        as: "fromLocation"
+                                    },
+                                    {
+                                        model: Location,
+                                        as: "lastLocationKnown"
+                                    }
+                                ],
+                            },
+                            {
+                                model: Character,
+                                as: "heardFromCharacter",
+                                include: [
+                                    {
+                                        model: Location,
+                                        as: "fromLocation"
+                                    },
+                                    {
+                                        model: Location,
+                                        as: "lastLocationKnown"
+                                    }
+                                ],
+                            },
+                            {
+                                model: Location,
+                                as: "aboutLocation"
+                            },
+                            {
+                                model: Location,
+                                as: "heardOnLocation"
+                            },
+                        ]
+                    },
+                ]
+            }));
+        };
+
+        knowledge.sort((a,b)=>{a.character_id - b.character_id});
+
+        return res.status(201).json(
+            { 
+                success: true,
+                message: `Aquí tienes toda la información que hemos encontrado.`,
+                data: knowledge
+            }
+        );
+    } catch (error) {
+        return res.status(501).json(
+            { 
+                success: false,
+                message: 'Algún mago ha saboteado tú búsqueda, estamos trabajando en solucionarlo.',
+                error: error.message
+            }
+        );  
+    }
+};
 
 // knowledgeCharacterController.updateCharacter = async (req,res) => {
 //     try {
