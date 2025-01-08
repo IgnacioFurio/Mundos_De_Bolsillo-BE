@@ -61,6 +61,7 @@ knowledgeCharacterController.getKnowledgeKnownByCharacterId = async(req,res) => 
                 include: [
                     {
                         model: Knowledge,
+                        exclude: ["createdAt", "updatedAt"],
                         include: [
                             {
                                 model: Character,
