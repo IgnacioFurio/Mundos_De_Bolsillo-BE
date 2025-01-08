@@ -55,6 +55,9 @@ knowledgeCharacterController.getKnowledgeKnownByCharacterId = async(req,res) => 
         for (let i = 0; i < characters_id.length; i++) {
             knowledge.push(await KnowledgeCharacter.findAll({
                 where: { character_id: characters_id[i] },
+                attributes: {
+                    exclude: ["createdAt", "updatedAt"]
+                },
                 include: [
                     {
                         model: Knowledge,
@@ -65,37 +68,64 @@ knowledgeCharacterController.getKnowledgeKnownByCharacterId = async(req,res) => 
                                 include: [
                                     {
                                         model: Location,
-                                        as: "fromLocation"
+                                        as: "fromLocation",
+                                        attributes: {
+                                            exclude: ["createdAt", "updatedAt"]
+                                        }
                                     },
                                     {
                                         model: Location,
-                                        as: "lastLocationKnown"
+                                        as: "lastLocationKnown",
+                                        attributes: {
+                                            exclude: ["createdAt", "updatedAt"]
+                                        }
+                                    },
+                                    {
+                                        model: World,
+                                        attributes: {
+                                            exclude: ["createdAt", "updatedAt"]
+                                        }
                                     }
                                 ],
                             },
                             {
                                 model: Character,
                                 as: "heardFromCharacter",
+                                attributes: {
+                                    exclude: ["createdAt", "updatedAt"]
+                                },
                                 include: [
                                     {
                                         model: Location,
-                                        as: "fromLocation"
+                                        as: "fromLocation",
+                                        attributes: {
+                                            exclude: ["createdAt", "updatedAt"]
+                                        }
                                     },
                                     {
                                         model: Location,
-                                        as: "lastLocationKnown"
+                                        as: "lastLocationKnown",
+                                        attributes: {
+                                            exclude: ["createdAt", "updatedAt"]
+                                        }
                                     }
                                 ],
                             },
                             {
                                 model: Location,
-                                as: "aboutLocation"
+                                as: "aboutLocation",
+                                attributes: {
+                                    exclude: ["createdAt", "updatedAt"]
+                                }
                             },
                             {
                                 model: Location,
-                                as: "heardOnLocation"
+                                as: "heardOnLocation",
+                                attributes: {
+                                    exclude: ["createdAt", "updatedAt"]
+                                }
                             },
-                        ]
+                        ],
                     },
                 ]
             }));
