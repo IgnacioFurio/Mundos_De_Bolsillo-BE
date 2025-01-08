@@ -61,11 +61,16 @@ knowledgeCharacterController.getKnowledgeKnownByCharacterId = async(req,res) => 
                 include: [
                     {
                         model: Knowledge,
-                        exclude: ["createdAt", "updatedAt"],
+                        attributes: {
+                            exclude: ["createdAt", "updatedAt"]
+                        },
                         include: [
                             {
                                 model: Character,
                                 as: "aboutCharacter",
+                                attributes: {
+                                    exclude: ["createdAt", "updatedAt"]
+                                },
                                 include: [
                                     {
                                         model: Location,
@@ -128,6 +133,34 @@ knowledgeCharacterController.getKnowledgeKnownByCharacterId = async(req,res) => 
                             },
                         ],
                     },
+                    {
+                        model: Character,
+                        attributes: {
+                            exclude: ["createdAt", "updatedAt"]
+                        },    
+                        include:[ 
+                            {
+                                model: World,
+                                attributes: {
+                                    exclude: ["createdAt", "updatedAt"]
+                                },
+                            },
+                            {
+                                model: Location,
+                                as: "fromLocation",
+                                attributes: {
+                                    exclude: ["createdAt", "updatedAt"]
+                                },
+                            },
+                            {
+                                model: Location,
+                                as: "lastLocationKnown",
+                                attributes: {
+                                    exclude: ["createdAt", "updatedAt"]
+                                },
+                            }
+                        ]
+                    }
                 ]
             }));
         };
