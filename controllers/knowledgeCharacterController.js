@@ -71,28 +71,6 @@ knowledgeCharacterController.getKnowledgeKnownByCharacterId = async(req,res) => 
                                 attributes: {
                                     exclude: ["createdAt", "updatedAt"]
                                 },
-                                include: [
-                                    {
-                                        model: Location,
-                                        as: "fromLocation",
-                                        attributes: {
-                                            exclude: ["createdAt", "updatedAt"]
-                                        }
-                                    },
-                                    {
-                                        model: Location,
-                                        as: "lastLocationKnown",
-                                        attributes: {
-                                            exclude: ["createdAt", "updatedAt"]
-                                        }
-                                    },
-                                    {
-                                        model: World,
-                                        attributes: {
-                                            exclude: ["createdAt", "updatedAt"]
-                                        }
-                                    }
-                                ],
                             },
                             {
                                 model: Character,
@@ -100,22 +78,6 @@ knowledgeCharacterController.getKnowledgeKnownByCharacterId = async(req,res) => 
                                 attributes: {
                                     exclude: ["createdAt", "updatedAt"]
                                 },
-                                include: [
-                                    {
-                                        model: Location,
-                                        as: "fromLocation",
-                                        attributes: {
-                                            exclude: ["createdAt", "updatedAt"]
-                                        }
-                                    },
-                                    {
-                                        model: Location,
-                                        as: "lastLocationKnown",
-                                        attributes: {
-                                            exclude: ["createdAt", "updatedAt"]
-                                        }
-                                    }
-                                ],
                             },
                             {
                                 model: Location,
@@ -132,34 +94,6 @@ knowledgeCharacterController.getKnowledgeKnownByCharacterId = async(req,res) => 
                                 }
                             },
                         ],
-                    },
-                    {
-                        model: Character,
-                        attributes: {
-                            exclude: ["createdAt", "updatedAt"]
-                        },    
-                        include:[ 
-                            {
-                                model: World,
-                                attributes: {
-                                    exclude: ["createdAt", "updatedAt"]
-                                },
-                            },
-                            {
-                                model: Location,
-                                as: "fromLocation",
-                                attributes: {
-                                    exclude: ["createdAt", "updatedAt"]
-                                },
-                            },
-                            {
-                                model: Location,
-                                as: "lastLocationKnown",
-                                attributes: {
-                                    exclude: ["createdAt", "updatedAt"]
-                                },
-                            }
-                        ]
                     }
                 ]
             }));
