@@ -53,7 +53,7 @@ knowledgeCharacterController.getKnowledgeKnownByCharacterId = async(req,res) => 
         let knowledge = [];
 
         for (let i = 0; i < characters_id.length; i++) {
-            knowledge.push(await KnowledgeCharacter.findAll({
+            const data = await KnowledgeCharacter.findAll({
                 where: { character_id: characters_id[i] },
                 attributes: {
                     exclude: ["createdAt", "updatedAt"]
@@ -96,17 +96,30 @@ knowledgeCharacterController.getKnowledgeKnownByCharacterId = async(req,res) => 
                         ],
                     }
                 ]
-            }));
+            });
+            if (data && data.length > 0) {
+                knowledge.push(...data)
+            }
         };
 
-        const flatKnowledge = knowledge.flat();
+        const flatKnowledge = knowledge.flat()
 
-        const uniqueKnowledge = flatKnowledge.reduce((acc, item) => {
-            if (!acc.some(k => k.knowledge_id === item.knowledge_id)) {
-                acc.push(item);
-            }
+        const uniqueKnowledge = Object.values(flatKnowledge.reduce((acc, item) => {
+            const { knowledge_id, character_id, Knowledge } = item;
+
+            if (!acc[knowledge_id]) {                
+                acc[knowledge_id] = {
+                    Knowledge,
+                    charactersKnow: []
+                };
+            };
+
+            if (!acc[knowledge_id].charactersKnow.includes(character_id)) {
+                acc[knowledge_id].charactersKnow.push(character_id);
+            };
+
             return acc;
-        }, []);       
+        }, {}));       
         
         uniqueKnowledge.sort((a,b)=>{a.character_id - b.character_id});
 
