@@ -99,13 +99,22 @@ knowledgeCharacterController.getKnowledgeKnownByCharacterId = async(req,res) => 
             }));
         };
 
-        knowledge.sort((a,b)=>{a.character_id - b.character_id});
+        const flatKnowledge = knowledge.flat();
+
+        const uniqueKnowledge = flatKnowledge.reduce((acc, item) => {
+            if (!acc.some(k => k.knowledge_id === item.knowledge_id)) {
+                acc.push(item);
+            }
+            return acc;
+        }, []);       
+        
+        uniqueKnowledge.sort((a,b)=>{a.character_id - b.character_id});
 
         return res.status(201).json(
             { 
                 success: true,
                 message: `Aquí tienes toda la información que hemos encontrado.`,
-                data: knowledge
+                data: uniqueKnowledge
             }
         );
     } catch (error) {
