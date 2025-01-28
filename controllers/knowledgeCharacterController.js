@@ -94,6 +94,10 @@ knowledgeCharacterController.getKnowledgeKnownByCharacterId = async(req,res) => 
                                 }
                             },
                         ],
+                    },
+                    {
+                        model:  Character,
+                        attributes: ["id", "name", "description"]
                     }
                 ]
             });
@@ -114,8 +118,8 @@ knowledgeCharacterController.getKnowledgeKnownByCharacterId = async(req,res) => 
                 };
             };
 
-            if (!acc[knowledge_id].charactersKnow.includes(character_id)) {
-                acc[knowledge_id].charactersKnow.push(character_id);
+            if (!acc[knowledge_id].charactersKnow.includes(data => data.id)) {
+                acc[knowledge_id].charactersKnow.push(item.Character);
             };
 
             return acc;
