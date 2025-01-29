@@ -89,8 +89,9 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.TEXT,
     world_id: DataTypes.INTEGER,
     from_location_id: DataTypes.INTEGER,
-    last_location_known_id: DataTypes.INTEGER
-  }, {
+    last_location_known_id: DataTypes.INTEGER,
+    npc: DataTypes.BOOLEAN
+  }, { 
     sequelize,
     modelName: 'Character',
   });

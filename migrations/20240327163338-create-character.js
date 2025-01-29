@@ -39,6 +39,10 @@ module.exports = {
           allowNull: true
         }
       },
+      npc: {
+        allowNull: true,
+        type: Sequelize.BOOLEAN
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
