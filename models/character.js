@@ -77,9 +77,9 @@ module.exports = (sequelize, DataTypes) => {
       Character.belongsToMany(
         models.Knowledge,
         {
-          foreignKey: "knowledge_id",
-          as: "knowledge",
-          through: "KnowledgeCharacters"
+          through: "KnowledgeCharacters",
+          foreignKey: "character_id",
+          otherKey: "knowledge_id",
         },
       );
     }
@@ -89,8 +89,9 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.TEXT,
     world_id: DataTypes.INTEGER,
     from_location_id: DataTypes.INTEGER,
-    last_location_known_id: DataTypes.INTEGER
-  }, {
+    last_location_known_id: DataTypes.INTEGER,
+    npc: DataTypes.BOOLEAN
+  }, { 
     sequelize,
     modelName: 'Character',
   });

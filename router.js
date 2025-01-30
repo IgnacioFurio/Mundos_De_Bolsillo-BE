@@ -9,6 +9,7 @@ const knowledgeRoutes = require('./views/knowledgeRoutes');
 const questRoutes = require('./views/questRoutes');
 const sceneRoutes = require('./views/sceneRoutes');
 const sessionRoutes = require('./views/sessionRoutes');
+const knowledgeCharacterRoutes = require('./views/knogledgeCharacterRoutes');
 
 router.use('/game', gameRoutes);
 router.use('/world', worldRoutes)
@@ -19,5 +20,6 @@ router.use('/knowledge', knowledgeRoutes)
 router.use('/quest', questRoutes)
 router.use('/scene', sceneRoutes)
 router.use('/session', sessionRoutes)
+router.use('/knowledge-characters', knowledgeCharacterRoutes)
 
 module.exports = router;

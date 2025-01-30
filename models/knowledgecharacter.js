@@ -26,6 +26,21 @@ module.exports = (sequelize, DataTypes) => {
           as: "session"
         }
       );
+
+      KnowledgeCharacter.belongsTo(
+        models.Character, 
+        { 
+          foreignKey: "character_id",
+        }
+      );
+
+      KnowledgeCharacter.belongsTo(
+        models.Knowledge, 
+        { 
+          foreignKey: "knowledge_id"
+        }
+      );
+
     }
   }
   KnowledgeCharacter.init({

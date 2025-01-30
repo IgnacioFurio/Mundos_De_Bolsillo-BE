@@ -34,7 +34,7 @@ knowledgeController.createKnowledge = async (req,res) => {
     }
 };
 
-knowledgeController.getKnowledgeByCharacterId = async(req,res) => {
+knowledgeController.getKnowledgeAboutCharacterId = async(req,res) => {
     try {
         const { about_character_id } = req.body;
 
@@ -68,43 +68,43 @@ knowledgeController.getKnowledgeByCharacterId = async(req,res) => {
             }));
         };
 
-        const allKnowledge = await Knowledge.findAll({
-            where: { about_character_id: about_character_id },
-            include: [
-                {
-                    model: Character,
-                    as: "aboutCharacter",
-                    attributes: {exclude: ["description", "world_id", "from_location_id", "last_location_known_id"] }
-                },
-                {
-                    model: Character,
-                    as: "heardFromCharacter",
-                    attributes: {exclude: ["description", "world_id", "from_location_id", "last_location_known_id"] }
-                },
-                {
-                    model: Location,
-                    as: "aboutLocation",
-                    attributes: {exclude: ["description", "world_id", "type", "government", "population", "defenses", "commerce"] }
-                },
-                {
-                    model: Location,
-                    as: "heardOnLocation",
-                    attributes: {exclude: ["description", "world_id", "type", "government", "population", "defenses", "commerce"] }
-                },
-            ]
-        });
+        // const allKnowledge = await Knowledge.findAll({
+        //     where: { about_character_id: about_character_id },
+        //     include: [
+        //         {
+        //             model: Character,
+        //             as: "aboutCharacter",
+        //             attributes: {exclude: ["description", "world_id", "from_location_id", "last_location_known_id"] }
+        //         },
+        //         {
+        //             model: Character,
+        //             as: "heardFromCharacter",
+        //             attributes: {exclude: ["description", "world_id", "from_location_id", "last_location_known_id"] }
+        //         },
+        //         {
+        //             model: Location,
+        //             as: "aboutLocation",
+        //             attributes: {exclude: ["description", "world_id", "type", "government", "population", "defenses", "commerce"] }
+        //         },
+        //         {
+        //             model: Location,
+        //             as: "heardOnLocation",
+        //             attributes: {exclude: ["description", "world_id", "type", "government", "population", "defenses", "commerce"] }
+        //         },
+        //     ]
+        // });
         
 
-        if (allKnowledge.lenght === 0) {
-            return res.status(404).json(
-                { 
-                    success: false,
-                    message: 'Estamos buscando minuciosamente pero no logramos encontrar el conocimiento que necesitas.',
-                }
-            );
-        };
+        // if (allKnowledge.lenght === 0) {
+        //     return res.status(404).json(
+        //         { 
+        //             success: false,
+        //             message: 'Estamos buscando minuciosamente pero no logramos encontrar el conocimiento que necesitas.',
+        //         }
+        //     );
+        // };
 
-        allKnowledge.sort((a,b)=>{a - b});
+        // allKnowledge.sort((a,b)=>{a - b});
 
         return res.status(201).json(
             { 
