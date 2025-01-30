@@ -97,7 +97,7 @@ knowledgeCharacterController.getKnowledgeKnownByCharacterId = async(req,res) => 
                     },
                     {
                         model:  Character,
-                        attributes: ["id", "name", "description"]
+                        attributes: ["id", "name", "description", "npc"]
                     }
                 ]
             });
